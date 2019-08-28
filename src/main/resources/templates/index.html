@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>LovelyLM的博客</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
+
+
+<link rel="stylesheet" type="text/css" href="statics/css/mycss.css" media="all" />
+<!--input-->
+<script type="text/javascript" src="statics/js/classie.js"></script>
+<link rel="stylesheet" type="text/css" href="statics/css/component.css" />
+
+
+
+</head>
+
+<body class="home blog custom-background round-avatars">
+	<div class="Yarn_Background" style="background-image: url( statics/images/47fb3c_.jpg);"></div>
+	<div th:replace="~{fragments/header::header}"></div>
+	<div id="main" class="content">
+		<div class="container">
+			<article itemscope="itemscope">
+				<div class="posts-list js-posts">
+					<!-- 搜索 -->
+					<div class="post post-layout-list" data-aos="fade-up">
+						<header class="post_header">
+							<p class="status_btn" style="font-size: xx-large; color: #918f90;">搜索</p>
+						</header>
+						<br>
+						<br>
+						<!-- 搜索input -->
+						<span class="input input--minoru">
+							<input class="input__field input__field--yoko" type="text" id="input-16" />
+							<label class="input__label input__label--yoko" for="input-16">
+								<span style="font-size: medium;" class="input__label-content input__label-content--yoko">dalao来本站想去看点什么？</span>
+							</label>
+						</span>
+						<!-- 搜索按钮 -->
+						<button class="bubbly-button" style="width: 150px; height: 50px; position: relative; left: 200px; bottom: 89px">
+							<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 5px">去吧！！</span>
+						</button>
+					</div>
+					<!-- 标题 -->
+					<div class="post post-layout-list" data-aos="fade-up">
+						<p class="status_btn" style="font-size: xx-large; color: #918f90;">博客</p>
+					</div>
+
+					<div class="post post-layout-list" data-aos="fade-up">
+						<div class="postnormal review ">
+							<div class="post-container review-item">
+								<div class="row review-item-wrapper">
+									<div class="col-sm-3">
+										<a rel="nofollow" href="detail.html">
+											<div class="review-item-img" style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+										</a>
+									</div>
+									<div class="col-sm-9 flex-xs-middle">
+										<div class="review-item-title">
+											<a href="detail.html" rel="bookmark">我才不会写年终总结之瞎说篇</a>
+										</div>
+										<div class="review-item-creator">
+											<b>发布日期：</b>
+											2017-12-30
+										</div>
+										<span class="review-item-info">
+											<b>总浏览量：</b>
+											1203 reads
+										</span>
+									</div>
+								</div>
+								<div class="review-bg-wrapper">
+									<div class="bg-blur" style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+								</div>
+							</div>
+							<div class="post-container">
+								<div class="entry-content">确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</div>
+								<div class="post-footer">
+									<a class="gaz-btn primary" href="">READ MORE</a>
+									<span class="total-comments-on-post pull-right">
+										<a href="">31 Comments</a>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="post post-layout-list" data-aos="fade-up">
+						<div class="postnormal review ">
+							<div class="post-container review-item">
+								<div class="row review-item-wrapper">
+									<div class="col-sm-3">
+										<a rel="nofollow" href="detail.html">
+											<div class="review-item-img" style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+										</a>
+									</div>
+									<div class="col-sm-9 flex-xs-middle">
+										<div class="review-item-title">
+											<a href="detail.html" rel="bookmark">给大家介绍一下</a>
+										</div>
+										<div class="review-item-creator">
+											<b>发布日期：</b>
+											2017-10-02
+										</div>
+										<span class="review-item-info">
+											<b>总浏览量：</b>
+											1600 reads
+										</span>
+									</div>
+								</div>
+								<div class="review-bg-wrapper">
+									<div class="bg-blur" style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+								</div>
+							</div>
+							<div class="post-container">
+								<div class="entry-content">现在的明星的影响力足以影响国内娱乐圈的"半壁江山"，发条微博，新浪都恐慌好几天，来来来，蹭个热点给大家介绍一下我的女朋友。</div>
+								<div class="post-footer">
+									<a class="gaz-btn primary" href="detail.html">READ MORE</a>
+									<span class="total-comments-on-post pull-right">
+										<a href="">30 Comments</a>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 标题 -->
+					<div class="post post-layout-list" data-aos="fade-up">
+						<p class="status_btn" style="font-size: xx-large; color: #918f90;">说说</p>
+					</div>
+					<div class="post post-layout-list" data-aos="fade-up">
+						<div class="status_list_item icon_kyubo">
+							<div class="status_user" style="background-image: url(statics/images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
+								<div class="status_section">
+									<a href="detail.html" class="status_btn">状态</a>
+									<p class="section_p">因为我这后半年飘忽不定的更新节奏，感觉真的对不住用户。最近才松下来能处理反馈的bug，顺便加快新主题 Dcras 的制作，农历年后或许能上线，准确时间，不敢说-- 为了感谢大家对 Yarn 的支持，Dcras 会以 获兑现码半价的承诺 给 Yarn ...</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="post post-layout-list" data-aos="fade-up">
+						<div class="status_list_item icon_kyubo">
+							<div class="status_user" style="background-image: url(statics/images/head.jpg);">
+								<div class="status_section">
+									<a href="detail.html" class="status_btn">状态</a>
+									<p class="section_p">因为我这后半年飘忽不定的更新节奏，感觉真的对不住用户。最近才松下来能处理反馈的bug，顺便加快新主题 Dcras 的制作，农历年后或许能上线，准确时间，不敢说-- 为了感谢大家对 Yarn 的支持，Dcras 会以 获兑现码半价的承诺 给 Yarn ...</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 标题 -->
+					<div class="post post-layout-list" data-aos="fade-up">
+						<p class="status_btn" style="font-size: xx-large; color: #918f90;">相册</p>
+					</div>
+					<div class="post post-layout-list js-gallery" data-aos="fade-up">
+						<div class="post-album">
+							<div class="row content">
+								<div class="bg" style="background-image: url(statics/images/IMG_0150.jpg);"></div>
+								<div class="contentext flex-xs-middle">
+									<div class="album-title">
+										<a href="detail.html">重构图像样式测试</a>
+									</div>
+									<h5 class="review-item-creator">
+										<b>发布日期：</b>
+										2017-11-13
+									</h5>
+									<div class="album-content">如眼所见是一个图像样式，必须写五十左右的文字作为这个文本框的空白填充，不写也是可以的，强迫症不能容忍空白。</div>
+								</div>
+								<div class="album-thumb-width flex-xs-middle">
+									<div class="row album-thumb no-gutter">
+										<!-- 长宽比例一致 -->
+										<div class="col-xs-4">
+											<img class="thumb" src="statics/images/IMG_0150-250x250.jpg" />
+										</div>
+										<div class="col-xs-4">
+											<img class="thumb" src="statics/images/IMG_0149-250x250.jpg" />
+										</div>
+										<div class="col-xs-4">
+											<img class="thumb" src="statics/images/IMG_0146-250x250.jpg" />
+										</div>
+										<div class="col-xs-4">
+											<img class="thumb" src="statics/images/IMG_0147-250x250.jpg" />
+										</div>
+										<div class="col-xs-4">
+											<img class="thumb" src="statics/images/IMG_0148-250x250.jpg" />
+										</div>
+										<div class="col-xs-4">
+											<a href="">5 pics</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- post-formats end Infinite Scroll star -->
+				<!-- post-formats -->
+				<div class="pagination js-pagination">
+					<div class="js-next pagination__load">
+						<a href="">
+							<i class="iconfont">&#xe605;</i>
+						</a>
+					</div>
+				</div>
+				<!-- -pagination  -->
+		</div>
+	</div>
+
+	<div th:replace="~{fragments/footer::footer}"></div>
+
+	<script type='text/javascript' src='statics/js/jquery.min.js'></script>
+	<script type='text/javascript' src='statics/js/plugins.js'></script>
+	<script type='text/javascript' src='statics/js/script.js'></script>
+	<script type='text/javascript' src='statics/js/particles.js'></script>
+	<script type='text/javascript' src='statics/js/aos.js'></script>
+	<script src="layer/layer.js"></script>
+
+	<!-- 弹出框 -->
+	<script type="text/javascript" th:inline="javascript">
+		//弹出框
+		$("#image").on("click", function() {
+			/*layer.open({
+				type : 2,
+				area : [ '700px', '450px' ],
+				fixed : false, //不固定
+				maxmin : true,
+				content : "http://localhost:8080/user.html"
+			});*/
+
+			var index = layer.open({
+				type : 2,
+				content : 'http://localhost:8080/index',
+				area : [ '320px', '195px' ],
+				maxmin : true
+			});
+			layer.full(index);
+		})
+	</script>
+	
+	<!-- button样式 -->
+	<script>
+		$(".button_su_inner").mouseenter(function(e) {
+			var parentOffset = $(this).offset();
+
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			$(this).prev(".su_button_circle").css({
+				"left" : relX,
+				"top" : relY
+			});
+			$(this).prev(".su_button_circle").removeClass("desplode-circle");
+			$(this).prev(".su_button_circle").addClass("explode-circle");
+
+		});
+
+		$(".button_su_inner").mouseleave(function(e) {
+
+			var parentOffset = $(this).offset();
+
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			$(this).prev(".su_button_circle").css({
+				"left" : relX,
+				"top" : relY
+			});
+			$(this).prev(".su_button_circle").removeClass("explode-circle");
+			$(this).prev(".su_button_circle").addClass("desplode-circle");
+
+		});
+	</script>
+	<!-- button click效果 -->
+	<script>
+		var animateButton = function(e) {
+
+			e.preventDefault;
+			//reset animation
+			e.target.classList.remove('animate');
+
+			e.target.classList.add('animate');
+			setTimeout(function() {
+				e.target.classList.remove('animate');
+			}, 700);
+		};
+
+		var classname = document.getElementsByClassName("bubbly-button");
+
+		for (var i = 0; i < classname.length; i++) {
+			classname[i].addEventListener('click', animateButton, false);
+		}
+	</script>
+
+	<!-- input -->
+	<script type="text/javascript">
+		(function() {
+			// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+			if (!String.prototype.trim) {
+				(function() {
+					// Make sure we trim BOM and NBSP
+					var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+					String.prototype.trim = function() {
+						return this.replace(rtrim, '');
+					};
+				})();
+			}
+
+			[].slice.call(document.querySelectorAll('input.input__field'))
+					.forEach(function(inputEl) {
+						// in case the input is already filled..
+						if (inputEl.value.trim() !== '') {
+							classie.add(inputEl.parentNode, 'input--filled');
+						}
+
+						// events:
+						inputEl.addEventListener('focus', onInputFocus);
+						inputEl.addEventListener('blur', onInputBlur);
+					});
+
+			function onInputFocus(ev) {
+				classie.add(ev.target.parentNode, 'input--filled');
+			}
+
+			function onInputBlur(ev) {
+				if (ev.target.value.trim() === '') {
+					classie.remove(ev.target.parentNode, 'input--filled');
+				}
+			}
+		})();
+	</script>
+</body>
+
+</html>

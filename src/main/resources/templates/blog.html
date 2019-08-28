@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<title>Lain的博客</title>
+<link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
+<link rel="stylesheet" type="text/css" href="statics/css/mycss.css" media="all" />
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<!-- 标签 -->
+<script type="text/javascript" src="statics/js/tagcloud.js"></script>
+
+
+<!--input-->
+<script type="text/javascript" src="statics/js/classie.js"></script>
+<link rel="stylesheet" type="text/css" href="statics/css/component.css" />
+
+
+
+</head>
+<body class="home blog custom-background round-avatars">
+	<div class="Yarn_Background" style="background-image: url( statics/images/47fb3c_.jpg);"></div>
+	<div th:replace="~{fragments/header::header}"></div>
+	<div id="main" class="content">
+		<div class="container">
+			<section class="post_content">
+
+				<div class="post post-layout-list" data-aos="fade-up">
+					<header class="post_header">
+						<p class="status_btn" style="font-size: xx-large; color: #918f90;">写博客</p>
+					</header>
+					<!-- 写博客按钮 -->
+					<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 15px; bottom: -50px">
+						<span class="su_button_circle"> </span>
+						<a href="#" class="button_su_inner">
+							<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 15px">写博客</span>
+						</a>
+					</div>
+				</div>
+
+
+				<div class="post post-layout-list" data-aos="fade-up">
+					<header class="post_header">
+						<p class="status_btn" style="font-size: xx-large; color: #918f90;">搜索</p>
+					</header>
+					<br>
+					<br>
+					<!-- 搜索input -->
+					<span class="input input--minoru">
+						<input class="input__field input__field--yoko" type="text" id="input-16" />
+						<label class="input__label input__label--yoko" for="input-16">
+							<span style="font-size: medium;" class="input__label-content input__label-content--yoko">dalao来本站想去看点什么？</span>
+						</label>
+					</span>
+					<!-- 搜索按钮 -->
+					<button class="bubbly-button" style="width: 150px; height: 50px; position: relative; left: 200px; bottom: 89px">
+						<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 5px">去吧！！</span>
+					</button>
+				</div>
+
+
+
+				<div class="post post-layout-list" data-aos="fade-up" style="position: relative; left: 0px; top: 300px">
+					<div class="tagcloud status_btn">
+						<a href="#">文献综述</a>
+						<a href="#">对外投资</a>
+						<a href="#">机器人</a>
+						<a href="#">区块链</a>
+						<a href="#">科技创新</a>
+						<a href="#">计算机科学</a>
+						<a href="#">自动驾驶</a>
+						<a href="#">研究价值</a>
+						<a href="#">模式识别</a>
+						<a href="#">自然语言处理</a>
+					</div>
+				</div>
+				<div class="post post-layout-list" data-aos="fade-up" style="position: relative; top: -220px">
+					<br>
+					<header class="post_header">
+						<p class="status_btn" style="font-size: xx-large; color: #918f90;">标签</p>
+					</header>
+					<br>
+				</div>
+
+				<hr style="position: relative; top: 30px">
+				<div class="post post-layout-list" data-aos="fade-up">
+					<br>
+					<header class="post_header">
+						<p class="status_btn" style="font-size: xx-large; color: #918f90;">我的博客</p>
+					</header>
+					<br>
+				</div>
+
+
+
+				<div class="post post-layout-list" data-aos="fade-up">
+					<div class="postnormal review ">
+						<div class="post-container review-item">
+							<div class="row review-item-wrapper">
+								<div class="col-sm-3">
+									<a rel="nofollow" href="detail.html">
+										<div class="review-item-img" style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+									</a>
+								</div>
+								<div class="col-sm-9 flex-xs-middle">
+									<div class="review-item-title">
+										<a href="detail.html" rel="bookmark">我才不会写年终总结之瞎说篇</a>
+									</div>
+									<div class="review-item-creator">
+										<b>发布日期：</b>
+										2017-12-30
+									</div>
+									<span class="review-item-info">
+										<b>总浏览量：</b>
+										1203 reads
+									</span>
+								</div>
+							</div>
+							<div class="review-bg-wrapper">
+								<div class="bg-blur" style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+							</div>
+						</div>
+						<div class="post-container">
+							<div class="entry-content">确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</div>
+							<div class="post-footer">
+								<a class="gaz-btn primary" href="">READ MORE</a>
+								<span class="total-comments-on-post pull-right">
+									<a href="">31 Comments</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="post post-layout-list" data-aos="fade-up">
+					<div class="postnormal review ">
+						<div class="post-container review-item">
+							<div class="row review-item-wrapper">
+								<div class="col-sm-3">
+									<a rel="nofollow" href="detail.html">
+										<div class="review-item-img" style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+									</a>
+								</div>
+								<div class="col-sm-9 flex-xs-middle">
+									<div class="review-item-title">
+										<a href="detail.html" rel="bookmark">给大家介绍一下</a>
+									</div>
+									<div class="review-item-creator">
+										<b>发布日期：</b>
+										2017-10-02
+									</div>
+									<span class="review-item-info">
+										<b>总浏览量：</b>
+										1600 reads
+									</span>
+								</div>
+							</div>
+							<div class="review-bg-wrapper">
+								<div class="bg-blur" style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+							</div>
+						</div>
+						<div class="post-container">
+							<div class="entry-content">现在的明星的影响力足以影响国内娱乐圈的"半壁江山"，发条微博，新浪都恐慌好几天，来来来，蹭个热点给大家介绍一下我的女朋友。</div>
+							<div class="post-footer">
+								<a class="gaz-btn primary" href="detail.html">READ MORE</a>
+								<span class="total-comments-on-post pull-right">
+									<a href="">30 Comments</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div th:replace="~{fragments/footer::footer}"></div>
+	<script type='text/javascript' src='statics/js/jquery.min.js'></script>
+	<script type='text/javascript' src='statics/js/plugins.js'></script>
+	<script type='text/javascript' src='statics/js/script.js'></script>
+	<script type='text/javascript' src='statics/js/particles.js'></script>
+	<script type='text/javascript' src='statics/js/aos.js'></script>
+	<script src="layer/layer.js"></script>
+	<!-- button样式 -->
+	<script>
+		$(".button_su_inner").mouseenter(function(e) {
+			var parentOffset = $(this).offset();
+
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			$(this).prev(".su_button_circle").css({
+				"left" : relX,
+				"top" : relY
+			});
+			$(this).prev(".su_button_circle").removeClass("desplode-circle");
+			$(this).prev(".su_button_circle").addClass("explode-circle");
+
+		});
+
+		$(".button_su_inner").mouseleave(function(e) {
+
+			var parentOffset = $(this).offset();
+
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			$(this).prev(".su_button_circle").css({
+				"left" : relX,
+				"top" : relY
+			});
+			$(this).prev(".su_button_circle").removeClass("explode-circle");
+			$(this).prev(".su_button_circle").addClass("desplode-circle");
+
+		});
+	</script>
+
+	<!-- 标签 -->
+	<script type="text/javascript">
+		/*3D标签云*/
+		tagcloud({
+			selector : ".tagcloud", //元素选择器
+			fontsize : 16, //基本字体大小, 单位px
+			radius : 100, //滚动半径, 单位px
+			mspeed : "normal", //滚动最大速度, 取值: slow, normal(默认), fast
+			ispeed : "normal", //滚动初速度, 取值: slow, normal(默认), fast
+			direction : 135, //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
+			keep : false
+		//鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
+		});
+	</script>
+
+	<!-- input -->
+	<script type="text/javascript">
+		(function() {
+			// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+			if (!String.prototype.trim) {
+				(function() {
+					// Make sure we trim BOM and NBSP
+					var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+					String.prototype.trim = function() {
+						return this.replace(rtrim, '');
+					};
+				})();
+			}
+
+			[].slice.call(document.querySelectorAll('input.input__field'))
+					.forEach(function(inputEl) {
+						// in case the input is already filled..
+						if (inputEl.value.trim() !== '') {
+							classie.add(inputEl.parentNode, 'input--filled');
+						}
+
+						// events:
+						inputEl.addEventListener('focus', onInputFocus);
+						inputEl.addEventListener('blur', onInputBlur);
+					});
+
+			function onInputFocus(ev) {
+				classie.add(ev.target.parentNode, 'input--filled');
+			}
+
+			function onInputBlur(ev) {
+				if (ev.target.value.trim() === '') {
+					classie.remove(ev.target.parentNode, 'input--filled');
+				}
+			}
+		})();
+	</script>
+
+	<!-- button click效果 -->
+	<script>
+		var animateButton = function(e) {
+
+			e.preventDefault;
+			//reset animation
+			e.target.classList.remove('animate');
+
+			e.target.classList.add('animate');
+			setTimeout(function() {
+				e.target.classList.remove('animate');
+			}, 700);
+		};
+
+		var classname = document.getElementsByClassName("bubbly-button");
+
+		for (var i = 0; i < classname.length; i++) {
+			classname[i].addEventListener('click', animateButton, false);
+		}
+	</script>
+</body>
+</html>

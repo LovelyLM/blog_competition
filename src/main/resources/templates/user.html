@@ -1,0 +1,334 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>LovelyLM的博客</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
+<link href="css/cropper.css" rel="stylesheet">
+<script src="js/cropper.js"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<!-- button -->
+<link rel="stylesheet" type="text/css" href="statics/css/mycss.css">
+<!--input-->
+<script type="text/javascript" src="statics/js/classie.js"></script>
+<link rel="stylesheet" type="text/css" href="statics/css/component.css" />
+
+</head>
+<body class="home blog custom-background round-avatars">
+	<div class="Yarn_Background" style="background-image: url( statics/images/47fb3c_.jpg);"></div>
+	<div th:replace="~{fragments/header::header}"></div>
+
+	<div class="container">
+		<div class="posts-list js-posts">
+			<div class="post post-layout-list" data-aos="fade-up">
+				<div class="status_list_item icon_kyubo">
+					<div class="status_section">
+						<p class="status_btn">头像：</p>
+						<br />
+						<div align="center" class="box" style="width: 300px; height: 200px; position: relative; right: -70px; bottom: 0px">
+							<img id="image" th:src="|upload/${owner.imageOriginal}|">
+						</div>
+
+						<div class="small" style="overflow: hidden; width: 130px; height: 130px; position: relative; right: -536px; bottom: 164px"></div>
+						<!-- 更换头像按钮 -->
+						<div class="button_su" style="width: 130px; height: 50px; position: relative; right: -160px; bottom: 50px">
+							<span class="su_button_circle"> </span>
+							<a onclick="changeImage()" class="button_su_inner">
+								<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">更换头像</span>
+							</a>
+						</div>
+						<!-- 确认上传按钮 -->
+						<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 400px; bottom: 50px">
+							<span class="su_button_circle"> </span>
+							<a onclick="uploadHeadImage()" class="button_su_inner">
+								<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">确认上传</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 修改名称 -->
+			<div class="post post-layout-list" data-aos="fade-up">
+				<div class="status_list_item icon_kyubo">
+					<div class="status_section">
+						<div class="col-md-5 mb-3">
+							<label class="status_btn">姓名：</label>
+						</div>
+
+						<!-- input -->
+						<span class="input input--hoshi">
+							<input id="input_username" style="font-size: x-large;" class="input__field input__field--hoshi" type="text" />
+							<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-1">
+								<span style="color: #C3B091" class="input__label-content input__label-content--hoshi" th:text="'原：'+${owner.username}">原：Lain</span>
+							</label>
+						</span>
+
+						<!-- 修改名称button-->
+						<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 200px; bottom: -25px">
+							<span class="su_button_circle"> </span>
+							<a onclick="modifyUsername()" class="button_su_inner">
+								<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">修改名称</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- 修改密码 -->
+			<div class="post post-layout-list" data-aos="fade-up">
+				<div class="status_list_item icon_kyubo">
+					<div class="status_section">
+						<div class="col-md-5 mb-3">
+							<label class="status_btn">密码：</label>
+						</div>
+
+						<span class="input input--hoshi">
+							<input id="input_password" style="font-size: x-large;" class="input__field input__field--hoshi" type="text" />
+							<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-1">
+								<span style="color: #C3B091" class="input__label-content input__label-content--hoshi" th:text="'原：'+${owner.password}">原：tt970628</span>
+							</label>
+						</span>
+
+						<!-- 修改密码 -->
+						<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 200px; bottom: -25px">
+							<span class="su_button_circle"> </span>
+							<a onclick="modifyPassword()" class="button_su_inner">
+								<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">修改密码</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 修改签名 -->
+			<div class="post post-layout-list" data-aos="fade-up">
+				<div class="status_list_item icon_kyubo">
+					<div class="status_section">
+						<div class="col-md-5 mb-3">
+							<label class="status_btn">个性签名：</label>
+						</div>
+
+						<span class="input input--hoshi">
+							<input id="input_personal_sign" style="font-size: x-large;" class="input__field input__field--hoshi" type="text" />
+							<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-1">
+								<span style="color: #C3B091" class="input__label-content input__label-content--hoshi" th:text="'原：'+${owner.personalSign}">原：www.sikiedu.com</span>
+							</label>
+						</span>
+
+						<!-- 修改签名 -->
+						<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 200px; bottom: -25px">
+							<span class="su_button_circle"> </span>
+							<a onclick="modifyPersonalSign()" class="button_su_inner">
+								<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">修改签名</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class="post post-layout-list" data-aos="fade-up">
+				<div class="status_list_item icon_kyubo">
+					<div class="status_section">
+						<p class="status_btn">姓名：</p>
+						<p class="section_p">相隔上一次的更新我掰手指数一数，下意识的双腿一软，给各位小哥哥小姐姐们跪下了。自从有了对象后，周末几乎落下了主题的进度（邪魅的笑）。一边开发新的主题，一边收集您们给我反馈回来的"臭虫"，还有新的主题后台看见了一些大神在...</p>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</div>
+	<form id="uploadImage" method="post" enctype="multipart/form-data">
+		<input type="file" name="file" id="headImageInput" style="display: none" accept="image/*">
+	</form>
+	<form th:action="uploadHeadImage" method="post">
+		<input type="text" id="base64-input" name="base64" style="display: none">
+		<input type="submit" id="uploadHeadImage" style="display: none">
+	</form>
+
+	<div th:replace="~{fragments/footer::footer}"></div>
+	<script type='text/javascript' src='statics/js/jquery.min.js'></script>
+	<script type='text/javascript' src='statics/js/plugins.js'></script>
+	<script type='text/javascript' src='statics/js/script.js'></script>
+	<script type='text/javascript' src='statics/js/particles.js'></script>
+	<script type='text/javascript' src='statics/js/aos.js'></script>
+	<script src="layer/layer.js"></script>
+
+
+	<script type="text/javascript" th:inline="javascript">
+		function modifyUsername() {
+			//获取input数据
+			var username = $("#input_username").val();
+			//发送后台请求
+			var xhr = new XMLHttpRequest();
+			var url = "?username="+username;
+			xhr.open("get",[[@{~/modifyUsername}]]+url,false);
+			xhr.onload = function () {
+				window.location = [[@{~/getOwner}]];
+			}
+
+
+			xhr.send();
+
+		}
+				function modifyPersonalSign() {
+					//获取input数据
+					var personalSign = $("#input_personal_sign").val();
+					//发送后台请求
+					var xhr = new XMLHttpRequest();
+					var url = "?personalSign="+personalSign;
+					xhr.open("get",[[@{~/modifyPersonalSign}]]+url,false);
+						xhr.onload = function () {
+							window.location = [[@{~/getOwner}]];
+							}
+
+
+							xhr.send();
+
+						}
+						function modifyPassword() {
+							//获取input数据
+							var password = $("#input_password").val();
+							//发送后台请求
+							var xhr = new XMLHttpRequest();
+							var url = "?password="+password;
+							xhr.open("get",[[@{~/modifyPassword}]]+url,false);
+								xhr.onload = function () {
+									window.location = [[@{~/getOwner}]];
+									}
+
+
+									xhr.send();
+
+								}
+
+	</script>
+
+
+
+
+
+	<script type="text/javascript" th:inline="javascript">
+		const image = document.getElementById("image");
+
+		var cropper = new Cropper(image, {
+
+			//裁剪框的比例
+			aspectRatio : 1 / 1,
+			//视图的模式
+			viewMode : 1,
+			preview : ".small",
+		});
+		function changeImage() {
+			$("#headImageInput").click();
+		}
+		$("#headImageInput").change(function () {
+			var formData = new FormData($("#uploadImage")[0]);
+
+
+			$.ajax({
+				type:"post",
+				url:[[@{~/saveImage}]],
+				async:false,
+				cache:false,
+				data:formData,
+				contentType:false,
+				// dataType:"json",
+				processData:false,
+				success:function (data) {
+					cropper.replace([[@{~/upload/}]]+data,false);
+				},
+				error:function () {
+					alert("上传失败！")
+				}
+
+
+		})
+		})
+		function uploadHeadImage() {
+			var width = cropper.getCropBoxData().width;
+			var height = cropper.getCropBoxData().height;
+			var base64URL = cropper.getCroppedCanvas({width:width,height:height}).toDataURL("image/jpeg");
+			$("#base64-input").val(base64URL);
+			$("#uploadHeadImage").click();
+		}
+		
+		
+	</script>
+
+	<!-- button样式 -->
+	<script>
+		$(".button_su_inner").mouseenter(function(e) {
+			var parentOffset = $(this).offset();
+
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			$(this).prev(".su_button_circle").css({
+				"left" : relX,
+				"top" : relY
+			});
+			$(this).prev(".su_button_circle").removeClass("desplode-circle");
+			$(this).prev(".su_button_circle").addClass("explode-circle");
+
+		});
+
+		$(".button_su_inner").mouseleave(function(e) {
+
+			var parentOffset = $(this).offset();
+
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			$(this).prev(".su_button_circle").css({
+				"left" : relX,
+				"top" : relY
+			});
+			$(this).prev(".su_button_circle").removeClass("explode-circle");
+			$(this).prev(".su_button_circle").addClass("desplode-circle");
+
+		});
+	</script>
+
+	<!-- input样式 -->
+	<script type="text/javascript">
+		(function() {
+			// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+			if (!String.prototype.trim) {
+				(function() {
+					// Make sure we trim BOM and NBSP
+					var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+					String.prototype.trim = function() {
+						return this.replace(rtrim, '');
+					};
+				})();
+			}
+
+			[].slice.call(document.querySelectorAll('input.input__field'))
+					.forEach(function(inputEl) {
+						// in case the input is already filled..
+						if (inputEl.value.trim() !== '') {
+							classie.add(inputEl.parentNode, 'input--filled');
+						}
+
+						// events:
+						inputEl.addEventListener('focus', onInputFocus);
+						inputEl.addEventListener('blur', onInputBlur);
+					});
+
+			function onInputFocus(ev) {
+				classie.add(ev.target.parentNode, 'input--filled');
+			}
+
+			function onInputBlur(ev) {
+				if (ev.target.value.trim() === '') {
+					classie.remove(ev.target.parentNode, 'input--filled');
+				}
+			}
+		})();
+	</script>
+</body>
+</html>

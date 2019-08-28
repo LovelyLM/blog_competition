@@ -1,0 +1,253 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Lain的博客</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+<link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
+
+<!-- button -->
+<link rel="stylesheet" type="text/css" href="statics/css/mycss.css">
+<!--input-->
+<script type="text/javascript" src="statics/js/classie.js"></script>
+<link rel="stylesheet" type="text/css" href="statics/css/component.css" />
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+</head>
+<style>
+body.custom-background {
+	background: #fff
+}
+
+.container {
+	padding: 10px 0px;
+}
+</style>
+
+<body class="home blog custom-background round-avatars">
+	<div class="Yarn_Background" style="background-image: url( statics/images/47fb3c_.jpg);"></div>
+	<div th:replace="~{fragments/header::header}"></div>
+	<div id="main" class="content">
+		<div class="container">
+			<section class="post_content">
+				<header class="post_header">
+					<p class="status_btn" style="font-size: xx-large; color: #918f90;">写博客</p>
+				</header>
+				<br>
+				<!-- 写博客 -->
+				<div class="post post-layout-list" data-aos="fade-up">
+					<!-- 标题 -->
+					<span class="input input--minoru">
+						<textarea style="background-color: #fafafa;font-size: x-large; position: relative; left: 130px; width: 500px; height: 75px;" class="input__field input__field--minoru" id="input-14"></textarea>
+						<label class="input__label input__label--minoru" for="input-14">
+							<span style="font-size: x-large;" class="input__label-content input__label-content--minoru">标题</span>
+						</label>
+					</span>
+					<!-- 正文 -->
+					<span class="input input--minoru">
+						<textarea style="background-color: #fafafa;font-size: x-large; position: relative; left: 500px; width: 870px; height: 150px;" class="input__field input__field--minoru" id="input-14"></textarea>
+						<label class="input__label input__label--minoru" for="input-14">
+							<span style="font-size: x-large;" class="input__label-content input__label-content--minoru">正文</span>
+						</label>
+					</span>
+					<!-- 图片按钮 -->
+					<div class="button_su" style="width: 130px; height: 50px; position: relative; left: -305px; bottom: -270px">
+						<span class="su_button_circle"> </span>
+						<a href="#" class="button_su_inner">
+							<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 15px">添加封面</span>
+						</a>
+					</div>
+					<header class="slide post_header">
+						<p title="switch down" class="btn-slide status_btn" style="color: #918f90;position: relative; bottom: -60px">编辑更多</p>
+					</header>
+				</div>
+
+
+			</section>
+
+			<!-- 线 -->
+			<svg id="upTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+				<path d="M0 0 L50 100 L100 0 Z"></path>
+			</svg>
+			<!-- 折叠区 -->
+			<div id="panel" style="display: none;">
+				<div class="comment-area">
+					<section class="comments">
+
+
+						<div class="post post-layout-list" data-aos="fade-up">
+							<!-- 小标题 -->
+							<span class="input input--minoru">
+								<textarea style="font-size: x-large; position: relative; left: 130px; width: 500px; height: 75px;" class="input__field input__field--minoru" id="input-14"></textarea>
+								<label class="input__label input__label--minoru" for="input-14">
+									<span style="font-size: x-large;" class="input__label-content input__label-content--minoru">小标题</span>
+								</label>
+							</span>
+							<!-- 小正文 -->
+							<span class="input input--minoru">
+								<textarea style="font-size: x-large; position: relative; left: 500px; width: 870px; height: 150px;" class="input__field input__field--minoru" id="input-14"></textarea>
+								<label class="input__label input__label--minoru" for="input-14">
+									<span style="font-size: x-large;" class="input__label-content input__label-content--minoru">小正文</span>
+								</label>
+							</span>
+							<!-- 图片按钮 -->
+							<div class="button_su" style="width: 130px; height: 50px; position: relative; left: -305px; bottom: -300px">
+								<span class="su_button_circle"> </span>
+								<a href="#" class="button_su_inner">
+									<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">添加图片</span>
+								</a>
+							</div>
+							<!-- 说说按钮 -->
+							<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 36px; bottom: -300px">
+								<span class="su_button_circle"> </span>
+								<a href="#" class="button_su_inner">
+									<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">添加说说</span>
+								</a>
+							</div>
+						</div>
+
+
+					</section>
+				</div>
+			</div>
+			<!-- 线 -->
+			<svg id="dwTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+				<path d="M0 0 L50 100 L100 0 Z"></path>
+			</svg>
+			<!-- 折叠区以下 -->
+			<div class="wrapper">
+				<div class="post post-layout-list" data-aos="fade-up">
+
+					<!-- 预览按钮 -->
+					<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 100px; bottom: -90px">
+						<span class="su_button_circle"> </span>
+						<a href="#" class="button_su_inner">
+							<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">预览</span>
+						</a>
+					</div>
+					<!-- 确认发布按钮 -->
+					<button class="bubbly-button" style="width: 150px; height: 50px; position: relative; left: 430px; bottom: -48px">
+						<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 5px">发布博客</span>
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="~{fragments/footer::footer}"></div>
+	<script type='text/javascript' src='statics/js/jquery.min.js'></script>
+	<script type='text/javascript' src='statics/js/plugins.js'></script>
+	<script type='text/javascript' src='statics/js/script.js'></script>
+	<script type='text/javascript' src='statics/js/particles.js'></script>
+	<script type='text/javascript' src='statics/js/aos.js'></script>
+
+
+	<!-- 按钮样式 -->
+	<!-- button样式 -->
+	<script>
+		$(".button_su_inner").mouseenter(function(e) {
+			var parentOffset = $(this).offset();
+
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			$(this).prev(".su_button_circle").css({
+				"left" : relX,
+				"top" : relY
+			});
+			$(this).prev(".su_button_circle").removeClass("desplode-circle");
+			$(this).prev(".su_button_circle").addClass("explode-circle");
+
+		});
+
+		$(".button_su_inner").mouseleave(function(e) {
+
+			var parentOffset = $(this).offset();
+
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			$(this).prev(".su_button_circle").css({
+				"left" : relX,
+				"top" : relY
+			});
+			$(this).prev(".su_button_circle").removeClass("explode-circle");
+			$(this).prev(".su_button_circle").addClass("desplode-circle");
+
+		});
+	</script>
+	<!-- button click效果 -->
+	<script>
+		var animateButton = function(e) {
+
+			e.preventDefault;
+			//reset animation
+			e.target.classList.remove('animate');
+
+			e.target.classList.add('animate');
+			setTimeout(function() {
+				e.target.classList.remove('animate');
+			}, 700);
+		};
+
+		var classname = document.getElementsByClassName("bubbly-button");
+
+		for (var i = 0; i < classname.length; i++) {
+			classname[i].addEventListener('click', animateButton, false);
+		}
+	</script>
+
+	<!-- input -->
+	<script type="text/javascript">
+		(function() {
+			// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+			if (!String.prototype.trim) {
+				(function() {
+					// Make sure we trim BOM and NBSP
+					var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+					String.prototype.trim = function() {
+						return this.replace(rtrim, '');
+					};
+				})();
+			}
+
+			[].slice.call(document.querySelectorAll('input.input__field'))
+					.forEach(function(inputEl) {
+						// in case the input is already filled..
+						if (inputEl.value.trim() !== '') {
+							classie.add(inputEl.parentNode, 'input--filled');
+						}
+
+						// events:
+						inputEl.addEventListener('focus', onInputFocus);
+						inputEl.addEventListener('blur', onInputBlur);
+					});
+
+			function onInputFocus(ev) {
+				classie.add(ev.target.parentNode, 'input--filled');
+			}
+
+			function onInputBlur(ev) {
+				if (ev.target.value.trim() === '') {
+					classie.remove(ev.target.parentNode, 'input--filled');
+				}
+			}
+		})();
+	</script>
+
+	<script type="text/javascript">
+		window.onscroll = function() {
+			var scrollTop = document.body.scrollTop;
+			if (scrollTop >= 200) {
+				document.getElementById("NextPrevPosts").style.display = "none"
+			} else {
+				document.getElementById("NextPrevPosts").style.display = "block"
+			}
+		}
+	</script>
+</body>
+
+</html>
