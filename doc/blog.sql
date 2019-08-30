@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 30/08/2019 13:27:16
+ Date: 30/08/2019 15:26:55
 */
 
 SET NAMES utf8mb4;
@@ -35,15 +35,13 @@ CREATE TABLE `blog`  (
   `mood_id` bigint(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKnwck5t6ye777cw5njohwcjlh9`(`mood_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of blog
 -- ----------------------------
-INSERT INTO `blog` VALUES (1, NULL, '# 大萨达撒大啥大所\n~~大萨达撒大啥奥多所大所多~~', NULL, '2019-08-30 00:08', '20190830000811965.png', NULL, NULL, 'java', NULL, NULL);
-INSERT INTO `blog` VALUES (2, 0, '# 正文', NULL, '2019-08-30 10:41', NULL, NULL, '大沙发上', '标题', 0, NULL);
-INSERT INTO `blog` VALUES (3, 0, '# dsa', NULL, '2019-08-30 10:49', NULL, NULL, '发达', '标题', 0, NULL);
-INSERT INTO `blog` VALUES (4, 0, '#### 大萨达撒', 'default.jpg', '2019-08-30 10:51', NULL, NULL, 'fasdas', '大萨达', 0, NULL);
+INSERT INTO `blog` VALUES (13, 0, '### 大三', 'default.jpg', '2019-08-30 15:17', NULL, NULL, '导语2', '标题2', 0, NULL);
+INSERT INTO `blog` VALUES (12, 0, '# 正文', 'default.jpg', '2019-08-30 15:16', NULL, NULL, '导语', '标题', 0, NULL);
 
 -- ----------------------------
 -- Table structure for blog_catalog
@@ -51,23 +49,16 @@ INSERT INTO `blog` VALUES (4, 0, '#### 大萨达撒', 'default.jpg', '2019-08-30
 DROP TABLE IF EXISTS `blog_catalog`;
 CREATE TABLE `blog_catalog`  (
   `blog_id` bigint(20) NOT NULL,
-  `catelog_id` bigint(20) NOT NULL,
   `catalog_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`blog_id`, `catelog_id`) USING BTREE,
-  INDEX `FK327ueiuu3xyx8o4rggivge2if`(`catelog_id`) USING BTREE,
-  INDEX `FKfo32rwtsnmv0bccmx8hl62rym`(`catalog_id`) USING BTREE
+  INDEX `FKfo32rwtsnmv0bccmx8hl62rym`(`catalog_id`) USING BTREE,
+  INDEX `FKikb6hat2wa3gsf09mpjjvdsfw`(`blog_id`) USING BTREE
 ) ENGINE = MyISAM CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
--- Table structure for blog_catalogs
+-- Records of blog_catalog
 -- ----------------------------
-DROP TABLE IF EXISTS `blog_catalogs`;
-CREATE TABLE `blog_catalogs`  (
-  `blogs_id` bigint(20) NOT NULL,
-  `catalogs_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`blogs_id`, `catalogs_id`) USING BTREE,
-  INDEX `FKlfgfpm37ktlouex9n1yixf85q`(`catalogs_id`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Fixed;
+INSERT INTO `blog_catalog` VALUES (13, 1);
+INSERT INTO `blog_catalog` VALUES (12, 20);
 
 -- ----------------------------
 -- Table structure for catalog
@@ -77,16 +68,13 @@ CREATE TABLE `catalog`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `catalog` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of catalog
 -- ----------------------------
 INSERT INTO `catalog` VALUES (1, 'java');
-INSERT INTO `catalog` VALUES (2, 'python');
-INSERT INTO `catalog` VALUES (6, 'c++');
-INSERT INTO `catalog` VALUES (7, 'c#');
-INSERT INTO `catalog` VALUES (8, 'mysql');
+INSERT INTO `catalog` VALUES (20, '分类');
 
 -- ----------------------------
 -- Table structure for mood

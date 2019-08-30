@@ -1,6 +1,7 @@
 package com.leiming.blog.service;
 
 import com.leiming.blog.domain.Mood;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
