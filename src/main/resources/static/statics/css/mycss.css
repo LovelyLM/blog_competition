@@ -4,6 +4,9 @@ body {
   font-family: 'Inconsolata', sans-serif;
   background: #2a364f;
 }
+a {
+    cursor:pointer;
+}
 
 h1{
   text-align: center;

@@ -38,7 +38,7 @@ public class UploadController {
         filename = timeStamp+sname;
         userService.modifyImage(filename);
         System.out.println("新的原始文件:"+filename);
-        String path = ResourceUtils.getURL("classpath:").getPath()+"static/upload";
+        String path = ResourceUtils.getURL("classpath:").getPath()+"static/upload/ico_original";
         File dest = null;
         try {
             dest = new File(URLDecoder.decode(path+"/"+filename,"utf-8"));
@@ -68,9 +68,41 @@ public class UploadController {
         String timeStamp=simpleDateFormat.format(new Date());
 
         filename = timeStamp+sname;
-        servletRequest.getSession().setAttribute("filename",filename);
+        servletRequest.getSession().setAttribute("mood",filename);
         System.out.println("新的原始文件:"+filename);
-        String path = ResourceUtils.getURL("classpath:").getPath()+"static/upload";
+        String path = ResourceUtils.getURL("classpath:").getPath()+"static/upload/mood";
+        File dest = null;
+        try {
+            dest = new File(URLDecoder.decode(path+"/"+filename,"utf-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        System.out.println(dest.getParentFile());
+        if (!dest.exists()){
+            dest.mkdirs();
+        }
+        try {
+            file.transferTo(dest);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return filename;
+    }
+    @ResponseBody
+    @RequestMapping("/saveCoverImage")
+    public String saveCoverImage(@RequestParam(value = "file") MultipartFile file, HttpServletRequest servletRequest) throws FileNotFoundException {
+        String filename = file.getOriginalFilename();
+
+        //后缀获取
+        String sname = filename.substring(filename.lastIndexOf("."));
+
+        SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String timeStamp=simpleDateFormat.format(new Date());
+
+        filename = timeStamp+sname;
+        servletRequest.getSession().setAttribute("cover",filename);
+        System.out.println("新的原始文件:"+filename);
+        String path = ResourceUtils.getURL("classpath:").getPath()+"static/upload/cover";
         File dest = null;
         try {
             dest = new File(URLDecoder.decode(path+"/"+filename,"utf-8"));

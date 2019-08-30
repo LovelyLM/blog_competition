@@ -41,4 +41,12 @@ public class MainController {
     public String user(){
         return "user.html";
     }
+    @RequestMapping("/detail")
+    public String detail(){
+        return "detail.html";
+    }
+    @RequestMapping("/addBlog")
+    public String addBlog(){
+        return "add-blog.html";
+    }
 }

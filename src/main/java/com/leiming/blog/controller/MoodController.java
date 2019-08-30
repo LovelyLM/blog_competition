@@ -33,7 +33,7 @@ public class MoodController {
         String createTime = format.format(date);
         System.out.println(createTime);
         mood.setCreatTime(createTime);
-        mood.setImage((String) servletRequest.getSession().getAttribute("filename"));
+        mood.setImage((String) servletRequest.getSession().getAttribute("mood"));
         User owner = (User) servletRequest.getAttribute("owner");
         mood.setUser(owner);
         moodService.save(mood);

@@ -1,6 +1,8 @@
 package com.leiming.blog.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Mood {
@@ -14,16 +16,27 @@ public class Mood {
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     private User user;
-
+    @OneToMany(targetEntity = Blog.class)
+    @JoinColumn(name = "mood_id")
+    private Set<Blog> blogs = new HashSet<>();
     public Mood() {
     }
 
-    public Mood(String title, String content, String creatTime, String image, User user) {
+    public Set<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(Set<Blog> blogs) {
+        this.blogs = blogs;
+    }
+
+    public Mood(String title, String content, String creatTime, String image, User user, Set<Blog> blogs) {
         this.title = title;
         this.content = content;
         this.creatTime = creatTime;
         this.image = image;
         this.user = user;
+        this.blogs = blogs;
     }
 
     public Long getId() {

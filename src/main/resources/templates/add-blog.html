@@ -1,253 +1,375 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Lain的博客</title>
-<meta name="description" content="" />
-<meta name="keywords" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Lain的博客</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="lib/js/editormd/css/editormd.css">
+    <script src="lib/js/editormd/editormd.amd.min.js"></script>
+    <link rel="stylesheet" href="lib/js/editormd/css/editormd.preview.css">
+    <script src="lib/js/editormd/editormd.js"></script>
+    <script src="lib/js/editormd/lib/marked.min.js"></script>
+    <script src="lib/js/editormd/lib/prettify.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all"/>
 
-<!-- button -->
-<link rel="stylesheet" type="text/css" href="statics/css/mycss.css">
-<!--input-->
-<script type="text/javascript" src="statics/js/classie.js"></script>
-<link rel="stylesheet" type="text/css" href="statics/css/component.css" />
+    <!-- button -->
+    <link rel="stylesheet" type="text/css" href="statics/css/mycss.css">
+    <!--input-->
+    <script type="text/javascript" src="statics/js/classie.js"></script>
+    <link rel="stylesheet" type="text/css" href="statics/css/component.css"/>
 
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        $(function () {
+            var testEditor;
+            testEditor = editormd("test-editormd", {
+
+                placeholder: '本编辑器支持Markdown编辑，左边编写，右边预览',  //默认显示的文字，这里就不解释了
+                width: "90%",
+                height: 640,
+                syncScrolling: "single",
+                path: "lib/js/editormd/lib/",   //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+                theme: "default",//工具栏主题
+                previewTheme: "default",//预览主题
+                editorTheme: "default",//编辑主题
+                saveHTMLToTextarea: true,
+                emoji: true,
+                taskList: true,
+                tocm: true,         // Using [TOCM]
+                tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+                flowChart: true,             // 开启流程图支持，默认关闭
+                sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+
+                toolbarIcons: function () {  //自定义工具栏，后面有详细介绍
+                    return editormd.toolbarModes['simple']; // full, simple, mini
+                },
+            });
+            // testEditor.watch();//开启双窗口对比
+            $("#save").click(function () {
+
+                console.log(testEditor.getMarkdown());
+                // $("#md").test("123");
+            });
+
+
+            //上面的挑有用的写上去就行
+            $("#saveBlog").click(function() {
+                var content = testEditor.getMarkdown();
+                console.log(content);
+                var title = $("#input-13").val();
+                var littleTitle = $("#input-14").val();
+                var catalogs = $("#input-12").val();
+                $.ajax({
+                    type:"post",
+                    url:[[@{~/saveBlog}]],
+                    data:{"title":title,"content":content,"littleTitle":littleTitle,"catalogString":catalogs},
+                    success:function (data) {
+                        layer.msg("发布成功！")
+                    }
+                })
+            })
+        })
+
+    </script>
+
 
 </head>
 <style>
-body.custom-background {
-	background: #fff
-}
+    body.custom-background {
+        background: #fff
+    }
 
-.container {
-	padding: 10px 0px;
-}
+    .container {
+        padding: 10px 0px;
+    }
+
+    h1 {
+        text-align: left;
+        color: black;
+
+    }
 </style>
 
 <body class="home blog custom-background round-avatars">
-	<div class="Yarn_Background" style="background-image: url( statics/images/47fb3c_.jpg);"></div>
-	<div th:replace="~{fragments/header::header}"></div>
-	<div id="main" class="content">
-		<div class="container">
-			<section class="post_content">
-				<header class="post_header">
-					<p class="status_btn" style="font-size: xx-large; color: #918f90;">写博客</p>
-				</header>
-				<br>
-				<!-- 写博客 -->
-				<div class="post post-layout-list" data-aos="fade-up">
-					<!-- 标题 -->
-					<span class="input input--minoru">
-						<textarea style="background-color: #fafafa;font-size: x-large; position: relative; left: 130px; width: 500px; height: 75px;" class="input__field input__field--minoru" id="input-14"></textarea>
-						<label class="input__label input__label--minoru" for="input-14">
+<div class="Yarn_Background" style="background-image: url( statics/images/47fb3c_.jpg);"></div>
+<div th:replace="~{fragments/header::header}"></div>
+<div id="main" class="content">
+    <div class="container">
+        <section class="post_content">
+            <header class="post_header">
+                <p class="status_btn" style="font-size: xx-large; color: #918f90;">写博客</p>
+            </header>
+            <br>
+            <!-- 写博客 -->
+            <div class="post post-layout-list" data-aos="fade-up">
+                <!-- 标题 -->
+                <span class="input input--minoru">
+												<label class="input__label input__label--minoru" for="input-14">
 							<span style="font-size: x-large;" class="input__label-content input__label-content--minoru">标题</span>
 						</label>
+						<textarea
+                                style="background-color: #fafafa;font-size: x-large; position: relative; left: 130px; width: 500px; height: 75px;"
+                                class="input__field input__field--minoru" id="input-13"></textarea>
+
 					</span>
-					<!-- 正文 -->
-					<span class="input input--minoru">
-						<textarea style="background-color: #fafafa;font-size: x-large; position: relative; left: 500px; width: 870px; height: 150px;" class="input__field input__field--minoru" id="input-14"></textarea>
-						<label class="input__label input__label--minoru" for="input-14">
+                <span class="input input--minoru">
+												<label class="input__label input__label--minoru" for="input-14">
+							<span style="font-size: x-large;" class="input__label-content input__label-content--minoru">分类</span>
+						</label>
+						<textarea
+                                style="background-color: #fafafa;font-size: x-large; position: relative; left: 130px; width: 500px; height: 75px;"
+                                class="input__field input__field--minoru" id="input-12" placeholder="多个标题以分号隔开"></textarea>
+
+					</span>
+                <!-- 正文 -->
+                <span class="input input--minoru">
+												<label class="input__label input__label--minoru" for="input-14">
 							<span style="font-size: x-large;" class="input__label-content input__label-content--minoru">正文</span>
 						</label>
-					</span>
-					<!-- 图片按钮 -->
-					<div class="button_su" style="width: 130px; height: 50px; position: relative; left: -305px; bottom: -270px">
-						<span class="su_button_circle"> </span>
-						<a href="#" class="button_su_inner">
-							<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 15px">添加封面</span>
-						</a>
-					</div>
-					<header class="slide post_header">
-						<p title="switch down" class="btn-slide status_btn" style="color: #918f90;position: relative; bottom: -60px">编辑更多</p>
-					</header>
-				</div>
-
-
-			</section>
-
-			<!-- 线 -->
-			<svg id="upTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
-				<path d="M0 0 L50 100 L100 0 Z"></path>
-			</svg>
-			<!-- 折叠区 -->
-			<div id="panel" style="display: none;">
-				<div class="comment-area">
-					<section class="comments">
-
-
-						<div class="post post-layout-list" data-aos="fade-up">
-							<!-- 小标题 -->
-							<span class="input input--minoru">
-								<textarea style="font-size: x-large; position: relative; left: 130px; width: 500px; height: 75px;" class="input__field input__field--minoru" id="input-14"></textarea>
-								<label class="input__label input__label--minoru" for="input-14">
-									<span style="font-size: x-large;" class="input__label-content input__label-content--minoru">小标题</span>
-								</label>
-							</span>
-							<!-- 小正文 -->
-							<span class="input input--minoru">
-								<textarea style="font-size: x-large; position: relative; left: 500px; width: 870px; height: 150px;" class="input__field input__field--minoru" id="input-14"></textarea>
-								<label class="input__label input__label--minoru" for="input-14">
-									<span style="font-size: x-large;" class="input__label-content input__label-content--minoru">小正文</span>
-								</label>
-							</span>
-							<!-- 图片按钮 -->
-							<div class="button_su" style="width: 130px; height: 50px; position: relative; left: -305px; bottom: -300px">
-								<span class="su_button_circle"> </span>
-								<a href="#" class="button_su_inner">
-									<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">添加图片</span>
-								</a>
-							</div>
-							<!-- 说说按钮 -->
-							<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 36px; bottom: -300px">
-								<span class="su_button_circle"> </span>
-								<a href="#" class="button_su_inner">
-									<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">添加说说</span>
-								</a>
-							</div>
+						<div id="layout" class="editor" style="width: 1100px;margin-left: -140px">
+    						<div id="test-editormd">
+        						<textarea></textarea>
+    						</div>
 						</div>
 
 
-					</section>
-				</div>
-			</div>
-			<!-- 线 -->
-			<svg id="dwTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
-				<path d="M0 0 L50 100 L100 0 Z"></path>
-			</svg>
-			<!-- 折叠区以下 -->
-			<div class="wrapper">
-				<div class="post post-layout-list" data-aos="fade-up">
+					</span>
 
-					<!-- 预览按钮 -->
-					<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 100px; bottom: -90px">
-						<span class="su_button_circle"> </span>
-						<a href="#" class="button_su_inner">
-							<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">预览</span>
-						</a>
-					</div>
-					<!-- 确认发布按钮 -->
-					<button class="bubbly-button" style="width: 150px; height: 50px; position: relative; left: 430px; bottom: -48px">
-						<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 5px">发布博客</span>
-					</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<div th:replace="~{fragments/footer::footer}"></div>
-	<script type='text/javascript' src='statics/js/jquery.min.js'></script>
-	<script type='text/javascript' src='statics/js/plugins.js'></script>
-	<script type='text/javascript' src='statics/js/script.js'></script>
-	<script type='text/javascript' src='statics/js/particles.js'></script>
-	<script type='text/javascript' src='statics/js/aos.js'></script>
+                <header class="slide post_header">
+                    <p title="switch down" class="btn-slide status_btn"
+                       style="color: #918f90;position: relative; bottom: -60px">编辑更多</p>
+                </header>
+            </div>
 
 
-	<!-- 按钮样式 -->
-	<!-- button样式 -->
-	<script>
-		$(".button_su_inner").mouseenter(function(e) {
-			var parentOffset = $(this).offset();
+        </section>
 
-			var relX = e.pageX - parentOffset.left;
-			var relY = e.pageY - parentOffset.top;
-			$(this).prev(".su_button_circle").css({
-				"left" : relX,
-				"top" : relY
-			});
-			$(this).prev(".su_button_circle").removeClass("desplode-circle");
-			$(this).prev(".su_button_circle").addClass("explode-circle");
+        <!-- 线 -->
+        <svg id="upTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+            <path d="M0 0 L50 100 L100 0 Z"></path>
+        </svg>
+        <!-- 折叠区 -->
+        <div id="panel" style="display: none;">
+            <div class="comment-area">
+                <section class="comments">
 
-		});
 
-		$(".button_su_inner").mouseleave(function(e) {
+                    <div class="post post-layout-list" data-aos="fade-up">
+                        <!--							&lt;!&ndash; 小标题 &ndash;&gt;-->
+                        <!--							<span class="input input&#45;&#45;minoru">-->
+                        <!--								<textarea style="font-size: x-large; position: relative; left: 130px; width: 500px; height: 75px;" class="input__field input__field&#45;&#45;minoru" id="input-14"></textarea>-->
+                        <!--								<label class="input__label input__label&#45;&#45;minoru" for="input-14">-->
+                        <!--									<span style="font-size: x-large;" class="input__label-content input__label-content&#45;&#45;minoru">小标题</span>-->
+                        <!--								</label>-->
+                        <!--							</span>-->
+                        <!-- 小正文 -->
+                        <span class="input input--minoru">
+																<label class="input__label input__label--minoru"
+                                                                       for="input-14">
+									<span style="font-size: x-large;"
+                                          class="input__label-content input__label-content--minoru">导语</span>
+								</label>
+								<textarea
+                                        style="font-size: x-large; position: relative; left: 500px; width: 870px; height: 150px;"
+                                        class="input__field input__field--minoru" id="input-14"
+                                        placeholder="无导语默认以正文开头30字"></textarea>
 
-			var parentOffset = $(this).offset();
+							</span>
+                        <div class="button_su"
+                             style="width: 130px; height: 50px; position: relative; left: -305px; bottom: -270px">
+                            <span class="su_button_circle"> </span>
+                            <a class="button_su_inner">
+                                <span class="status_btn" onclick="uploadCover()"
+                                      style="color: white; position: relative; right: 0px; bottom: 15px">添加封面</span>
+                            </a>
+                        </div>
+                        <!-- 图片按钮 -->
+                        <!--							<div class="button_su" style="width: 130px; height: 50px; position: relative; left: -305px; bottom: -300px">-->
+                        <!--								<span class="su_button_circle"> </span>-->
+                        <!--								<a href="#" class="button_su_inner">-->
+                        <!--									<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">添加图片</span>-->
+                        <!--								</a>-->
+                        <!--							</div>-->
+                        <!--							&lt;!&ndash; 说说按钮 &ndash;&gt;-->
+                        <!--							<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 36px; bottom: -300px">-->
+                        <!--								<span class="su_button_circle"> </span>-->
+                        <!--								<a href="#" class="button_su_inner">-->
+                        <!--									<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">添加说说</span>-->
+                        <!--								</a>-->
+                        <!--							</div>-->
+                    </div>
 
-			var relX = e.pageX - parentOffset.left;
-			var relY = e.pageY - parentOffset.top;
-			$(this).prev(".su_button_circle").css({
-				"left" : relX,
-				"top" : relY
-			});
-			$(this).prev(".su_button_circle").removeClass("explode-circle");
-			$(this).prev(".su_button_circle").addClass("desplode-circle");
 
-		});
-	</script>
-	<!-- button click效果 -->
-	<script>
-		var animateButton = function(e) {
+                </section>
+            </div>
+        </div>
+        <!-- 线 -->
+        <svg id="dwTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+            <path d="M0 0 L50 100 L100 0 Z"></path>
+        </svg>
+        <!-- 折叠区以下 -->
+        <div class="wrapper">
+            <div class="post post-layout-list" data-aos="fade-up">
 
-			e.preventDefault;
-			//reset animation
-			e.target.classList.remove('animate');
+                <!--					&lt;!&ndash; 预览按钮 &ndash;&gt;-->
+                <!--					<div class="button_su" style="width: 130px; height: 50px; position: relative; left: 100px; bottom: -90px">-->
+                <!--						<span class="su_button_circle"> </span>-->
+                <!--						<a href="#" class="button_su_inner">-->
+                <!--							<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 11px">预览</span>-->
+                <!--						</a>-->
+                <!--					</div>-->
+                <!-- 确认发布按钮 -->
+                <button class="bubbly-button"
+                        style="width: 150px; height: 50px; position: relative; left: 430px; bottom: -48px" id="saveBlog">
+                    <span class="status_btn"
+                          style="color: white; position: relative; right: 0px; bottom: 5px">发布博客</span>
+                </button>
+            </div>
 
-			e.target.classList.add('animate');
-			setTimeout(function() {
-				e.target.classList.remove('animate');
-			}, 700);
-		};
+        </div>
+    </div>
+</div>
+<form id="saveCover" method="post" th:action="@{~/saveCover}" enctype="multipart/form-data">
+    <input type="file" id="coverImage" onchange="addCover(this)" name="file" hidden="hidden">
+</form>
 
-		var classname = document.getElementsByClassName("bubbly-button");
+<div th:replace="~{fragments/footer::footer}"></div>
+<script type='text/javascript' src='statics/js/jquery.min.js'></script>
+<script type='text/javascript' src='statics/js/plugins.js'></script>
+<script type='text/javascript' src='statics/js/script.js'></script>
+<script type='text/javascript' src='statics/js/particles.js'></script>
+<script type='text/javascript' src='statics/js/aos.js'></script>
+<script src="layer/layer.js"></script>
+<script type="text/javascript" th:inline="javascript">
 
-		for (var i = 0; i < classname.length; i++) {
-			classname[i].addEventListener('click', animateButton, false);
-		}
-	</script>
+    function uploadCover() {
+        $("#coverImage").click()
+    }
+    function addCover() {
+        var formData = new FormData($("#saveCover")[0]);
+        $.ajax({
+            type:"post",
+            url:[[@{~/saveCoverImage}]],
+            async:false,
+                cache:false,
+                data:formData,
+                processData:false,
+                contentType:false,
+                success:function () {
+                layer.msg("上传成功！")
+            }
+        })
 
-	<!-- input -->
-	<script type="text/javascript">
-		(function() {
-			// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
-			if (!String.prototype.trim) {
-				(function() {
-					// Make sure we trim BOM and NBSP
-					var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-					String.prototype.trim = function() {
-						return this.replace(rtrim, '');
-					};
-				})();
-			}
+    }
+</script>
 
-			[].slice.call(document.querySelectorAll('input.input__field'))
-					.forEach(function(inputEl) {
-						// in case the input is already filled..
-						if (inputEl.value.trim() !== '') {
-							classie.add(inputEl.parentNode, 'input--filled');
-						}
 
-						// events:
-						inputEl.addEventListener('focus', onInputFocus);
-						inputEl.addEventListener('blur', onInputBlur);
-					});
+<!-- 按钮样式 -->
+<!-- button样式 -->
+<script>
+    $(".button_su_inner").mouseenter(function (e) {
+        var parentOffset = $(this).offset();
 
-			function onInputFocus(ev) {
-				classie.add(ev.target.parentNode, 'input--filled');
-			}
+        var relX = e.pageX - parentOffset.left;
+        var relY = e.pageY - parentOffset.top;
+        $(this).prev(".su_button_circle").css({
+            "left": relX,
+            "top": relY
+        });
+        $(this).prev(".su_button_circle").removeClass("desplode-circle");
+        $(this).prev(".su_button_circle").addClass("explode-circle");
 
-			function onInputBlur(ev) {
-				if (ev.target.value.trim() === '') {
-					classie.remove(ev.target.parentNode, 'input--filled');
-				}
-			}
-		})();
-	</script>
+    });
 
-	<script type="text/javascript">
-		window.onscroll = function() {
-			var scrollTop = document.body.scrollTop;
-			if (scrollTop >= 200) {
-				document.getElementById("NextPrevPosts").style.display = "none"
-			} else {
-				document.getElementById("NextPrevPosts").style.display = "block"
-			}
-		}
-	</script>
+    $(".button_su_inner").mouseleave(function (e) {
+
+        var parentOffset = $(this).offset();
+
+        var relX = e.pageX - parentOffset.left;
+        var relY = e.pageY - parentOffset.top;
+        $(this).prev(".su_button_circle").css({
+            "left": relX,
+            "top": relY
+        });
+        $(this).prev(".su_button_circle").removeClass("explode-circle");
+        $(this).prev(".su_button_circle").addClass("desplode-circle");
+
+    });
+</script>
+<!-- button click效果 -->
+<script>
+    var animateButton = function (e) {
+
+        e.preventDefault;
+        //reset animation
+        e.target.classList.remove('animate');
+
+        e.target.classList.add('animate');
+        setTimeout(function () {
+            e.target.classList.remove('animate');
+        }, 700);
+    };
+
+    var classname = document.getElementsByClassName("bubbly-button");
+
+    for (var i = 0; i < classname.length; i++) {
+        classname[i].addEventListener('click', animateButton, false);
+    }
+</script>
+
+<!-- input -->
+<script type="text/javascript">
+    (function () {
+        // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+        if (!String.prototype.trim) {
+            (function () {
+                // Make sure we trim BOM and NBSP
+                var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                String.prototype.trim = function () {
+                    return this.replace(rtrim, '');
+                };
+            })();
+        }
+
+        [].slice.call(document.querySelectorAll('input.input__field'))
+            .forEach(function (inputEl) {
+                // in case the input is already filled..
+                if (inputEl.value.trim() !== '') {
+                    classie.add(inputEl.parentNode, 'input--filled');
+                }
+
+                // events:
+                inputEl.addEventListener('focus', onInputFocus);
+                inputEl.addEventListener('blur', onInputBlur);
+            });
+
+        function onInputFocus(ev) {
+            classie.add(ev.target.parentNode, 'input--filled');
+        }
+
+        function onInputBlur(ev) {
+            if (ev.target.value.trim() === '') {
+                classie.remove(ev.target.parentNode, 'input--filled');
+            }
+        }
+    })();
+</script>
+
+<script type="text/javascript">
+    window.onscroll = function () {
+        var scrollTop = document.body.scrollTop;
+        if (scrollTop >= 200) {
+            document.getElementById("NextPrevPosts").style.display = "none"
+        } else {
+            document.getElementById("NextPrevPosts").style.display = "block"
+        }
+    }
+</script>
 </body>
 
 </html>
