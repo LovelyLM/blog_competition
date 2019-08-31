@@ -15,15 +15,7 @@
 	background: 0 0
 }
 
-::-moz-selection {
-	background: rgba(204, 204, 204, .18);
-	color: #000
-}
 
-::selection {
-	background: rgba(204, 204, 204, .18);
-	color: #000
-}
 
 html body {
 	_background-attachment: fixed;

@@ -131,8 +131,10 @@ body.custom-background {
 					data:{"id":id},
 					type:"post",
 							success:function (data) {
-						layer.msg("删除成功！")
-						window.location = [[@{~/findMood}]]
+						layer.msg("删除成功！",function () {
+							window.location = [[@{~/findMood}]]
+						})
+
 						}
 					})
 				layer.close(index);
@@ -140,6 +142,7 @@ body.custom-background {
 		}
 		function uploadImage() {
 			$("#uploadImage").click();
+			layer.msg("发布成功")
 		}
 		function addImage() {
 			var formData = new FormData($("#moodIamge")[0]);
