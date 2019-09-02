@@ -43,10 +43,6 @@ public class MainController {
     public String link(){
         return "link.html";
     }
-    @RequestMapping("/archives")
-    public String archives(){
-        return "archives.html";
-    }
     @RequestMapping("/blog")
     public String blog(){
         return "blog.html";
@@ -66,5 +62,13 @@ public class MainController {
     @RequestMapping("/addBlog")
     public String addBlog(){
         return "add-blog.html";
+    }
+    @RequestMapping("/imageDetail")
+    public String imageDetail(){
+        return "image-detail.html";
+    }
+    @RequestMapping("/addImage")
+    public String imageImage(){
+        return "add-image.html";
     }
 }

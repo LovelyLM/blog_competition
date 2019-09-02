@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Lain的博客</title>
+<title>LovelyLM的博客</title>
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
@@ -47,7 +47,7 @@
 					<div class="post-body js-gallery">
 						<div id="test-markdown-view">
 							<!-- Server-side output Markdown text -->
-							<textarea id="dsa" style="display:none;" ># 你是谁
+							<textarea id="dsa" style="display:none;" th:text="${blog.content}"># 你是谁
 `java`
 ~~大萨达撒大单杀啥多~~
 ## 打
@@ -61,11 +61,10 @@
 					</div>
 					<div class="meta split split--responsive cf">
 						<div class="split__title">
-							<time datetime="2017-10-02 01:44">2017/10/02</time>
-							<span class="">
-								<a href="" rel="tag">主题</a>
-								<a href="" rel="tag">日常</a>
-								<a href="" rel="tag">更新</a>
+							<time datetime="2017-10-02 01:44" th:text="${blog.createTime}">2017/10/02</time>
+							&nbsp
+							<span class="" th:each="catalogs:${blog.catalogs}">
+								<a href="" rel="tag" th:text="${catalogs.catalog}" style="color:#F35375;font-weight:bold">主题</a>
 							</span>
 						</div>
 						<div id="social-share">
@@ -116,7 +115,7 @@
 				<section class="comments">
 					<div class="comments-main">
 						<div id="comments-list-title">
-							<span>30</span>
+							<span th:text="${blog.commentNumber}">30</span>
 							条评论
 						</div>
 						<div id="loading-comments">

@@ -45,18 +45,14 @@ public class BlogController {
             Catalog catalog =new Catalog(null,s,new HashSet<Blog>());
             Catalog temp = catalogsService.findCatalogByCatalog(s);
             if (temp==null){
-                System.out.println("++++++++++:"+s);
-
                 catalogsService.saveCatalog(catalog);
             }else {
                 catalog = temp;
             }
             blog.getCatalogs().add(catalog);
-
         }
         blogService.save(blog);
         servletRequest.getSession().setAttribute("cover","default.jpeg");
-
         return "redirect:/blog";
     }
     @RequestMapping("findAllBlog")
@@ -66,5 +62,12 @@ public class BlogController {
         model.addAttribute("blogList",blogList);
         model.addAttribute("catalogList",catalogList);
         return new ModelAndView("/blog","blogModel",model);
+    }
+    @RequestMapping("blogDetail")
+    public ModelAndView blogDetail(Model model,String id){
+        System.out.println(id);
+        Blog blog = blogService.findAllById(Long.valueOf(id));
+        model.addAttribute("blog",blog);
+        return new ModelAndView("/detail","blogModel",model);
     }
 }

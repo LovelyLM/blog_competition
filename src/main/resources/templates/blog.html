@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8">
-<title>Lain的博客</title>
+<title>LovelyLM的博客</title>
 <link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
 <link rel="stylesheet" type="text/css" href="statics/css/mycss.css" media="all" />
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
@@ -91,13 +91,13 @@
 						<div class="post-container review-item">
 							<div class="row review-item-wrapper">
 								<div class="col-sm-3">
-									<a rel="nofollow" href="detail.html">
+									<a rel="nofollow" th:href="@{'/blogDetail?id='+${blog.id}}">
 										<div class="review-item-img" th:style="|background-image: url('/upload/cover/${blog.cover}');|"></div>
 									</a>
 								</div>
 								<div class="col-sm-9 flex-xs-middle" style="color: #494865">
 									<div class="review-item-title" >
-										<a href="detail.html" rel="bookmark" th:text="${blog.title}" style="color: #494865">我才不会写年终总结之瞎说篇</a>
+										<a th:href="@{'/blogDetail?id='+${blog.id}}" rel="bookmark" th:text="${blog.title}" style="color: #494865">我才不会写年终总结之瞎说篇</a>
 									</div>
 									<div class="review-item-creator">
 										<b>发布日期：</b>
@@ -116,7 +116,7 @@
 						<div class="post-container">
 							<div class="entry-content" th:text="${blog.littleTitle}" style="color: #494865">确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</div>
 							<div class="post-footer">
-								<a class="gaz-btn primary" href="">READ MORE</a>
+								<a class="gaz-btn primary" th:href="@{'/blogDetail?id='+${blog.id}}">READ MORE</a>
 								<span class="total-comments-on-post pull-right">
 									<a href=""><span th:text="${blog.commentNumber}">31</span> Comments</a>
 								</span>

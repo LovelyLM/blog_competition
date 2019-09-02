@@ -9,4 +9,10 @@ public interface BlogService {
     void save(Blog blog);
 
     List<Blog> findAllBlog();
+
+    Blog findAllById(Long id);
+
+    List<Blog> findAllBlogByCreateTime();
+
+    List<String> findAllBlogTimeLine();
 }
