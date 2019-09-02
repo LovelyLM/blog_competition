@@ -1,2 +1,2 @@
 # blog_competition
-for my competition of my school
+重工2019秋第二课堂雷总小组参赛项目
