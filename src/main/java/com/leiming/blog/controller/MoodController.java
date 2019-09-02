@@ -37,6 +37,7 @@ public class MoodController {
         User owner = (User) servletRequest.getAttribute("owner");
         mood.setUser(owner);
         moodService.save(mood);
+        servletRequest.getSession().setAttribute("mood","default.jpeg");
         return "redirect:/findMood";
     }
     @RequestMapping("/deleteMood")

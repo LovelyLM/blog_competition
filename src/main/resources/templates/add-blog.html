@@ -70,6 +70,7 @@
                     data:{"title":title,"content":content,"littleTitle":littleTitle,"catalogString":catalogs},
                     success:function (data) {
                         layer.msg("发布成功！");
+                        window.location=[[@{~/findAllBlog}]]
                     }
                 })
             })
@@ -114,7 +115,7 @@
 						</label>
 						<textarea
                                 style="background-color: #fafafa;font-size: x-large; position: relative; left: 130px; width: 500px; height: 75px;"
-                                class="input__field input__field--minoru" id="input-13"></textarea>
+                                class="input__field input__field--minoru" id="input-13" placeholder="请输入标题"></textarea>
 
 					</span>
                 <span class="input input--minoru">

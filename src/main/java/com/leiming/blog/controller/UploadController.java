@@ -101,7 +101,6 @@ public class UploadController {
 
         filename = timeStamp+sname;
         servletRequest.getSession().setAttribute("cover",filename);
-        System.out.println("新的原始文件:"+filename);
         String path = ResourceUtils.getURL("classpath:").getPath()+"static/upload/cover";
         File dest = null;
         try {

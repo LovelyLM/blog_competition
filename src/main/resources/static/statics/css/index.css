@@ -354,7 +354,6 @@
 }
 
 .hermit-song.selected.paused .hermit-song-index {
-	background-image: url(../images/playing.png)
 }
 
 .hermit-default .hermit-prosess-after:hover,
@@ -5178,7 +5177,7 @@ body[data-aos-duration='950'] [data-aos] {
 
 [data-aos][data-aos][data-aos-delay='950'],
 body[data-aos-delay='950'] [data-aos] {
-	transition-delay: 0
+	transition-delay: 0ms;
 }
 
 [data-aos][data-aos][data-aos-delay='950'].aos-animate,

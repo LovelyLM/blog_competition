@@ -4,7 +4,6 @@ import com.leiming.blog.domain.Mood;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 public interface MoodService {
     void save(Mood mood);
 

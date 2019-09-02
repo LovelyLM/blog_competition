@@ -20,7 +20,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public List<Blog> findAllBlog() {
-        Iterable<Blog> blogs = blogRepository.findAll();
-        return (List<Blog>) blogs;
+        Iterable<Blog> blogList = blogRepository.findAll();
+        return (List<Blog>) blogList;
     }
 }

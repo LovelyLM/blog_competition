@@ -42,7 +42,7 @@ public class BlogController {
         blog.setViewNumber(0L);
         String[] split = catalogString.split(";");
         for (String s:split) {
-            Catalog catalog =new Catalog(s,new HashSet<Blog>());
+            Catalog catalog =new Catalog(null,s,new HashSet<Blog>());
             Catalog temp = catalogsService.findCatalogByCatalog(s);
             if (temp==null){
                 System.out.println("++++++++++:"+s);
@@ -55,6 +55,8 @@ public class BlogController {
 
         }
         blogService.save(blog);
+        servletRequest.getSession().setAttribute("cover","default.jpeg");
+
         return "redirect:/blog";
     }
     @RequestMapping("findAllBlog")
@@ -62,6 +64,7 @@ public class BlogController {
         List<Blog> blogList = blogService.findAllBlog();
         List<Catalog> catalogList= catalogsService.findAllCatalog();
         model.addAttribute("blogList",blogList);
+        model.addAttribute("catalogList",catalogList);
         return new ModelAndView("/blog","blogModel",model);
     }
 }

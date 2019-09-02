@@ -10,35 +10,35 @@ public class Catalog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String catalog;
-    @ManyToMany(mappedBy = "catalogs")
-    private Set<Blog> blogs =new HashSet<>();
 
-    public Catalog(String catalog, Set<Blog> blogs) {
+    @ManyToMany(mappedBy = "catalogs")
+    private Set<Blog> blogs = new HashSet<Blog>();
+
+    protected Catalog() {
+
+    }
+
+    public Catalog(Long id, String catalog, Set<Blog> blogs) {
+        super();
+        this.id = id;
         this.catalog = catalog;
         this.blogs = blogs;
     }
-
-    @Override
-    public String toString() {
-        return "Catalog{" +
-                "id=" + id +
-                ", catalog='" + catalog + '\'' +
-                ", blogs=" + blogs +
-                '}';
+    public Set<Blog> getBlogs() {
+        return blogs;
     }
-
-
-    public Catalog(String catalog) {
-        this.catalog = catalog;
+    public void setBlogs(Set<Blog> blogs) {
+        this.blogs = blogs;
     }
-
-    public Catalog() {
+    public Long getId() {
+        return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
+    public String getCatalog() {
+        return catalog;
+    }
     public void setCatalog(String catalog) {
         this.catalog = catalog;
     }

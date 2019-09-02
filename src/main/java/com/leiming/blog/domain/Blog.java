@@ -27,7 +27,7 @@ public class Blog {
             joinColumns = @JoinColumn(name = "blog_id"),
             inverseJoinColumns = @JoinColumn(name = "catalog_id")
     )
-    private Set<Catalog> catalogs = new HashSet<>();
+    private Set<Catalog> catalogs = new HashSet<Catalog>();
 
     @Override
     public String toString() {

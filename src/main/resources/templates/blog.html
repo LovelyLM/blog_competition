@@ -61,16 +61,10 @@
 
 				<div class="post post-layout-list" data-aos="fade-up" style="position: relative; left: 0px; top: 300px">
 					<div class="tagcloud status_btn">
-						<a href="#">文献综述</a>
-						<a href="#">对外投资</a>
-						<a href="#">机器人</a>
-						<a href="#">区块链</a>
-						<a href="#">科技创新</a>
-						<a href="#">计算机科学</a>
-						<a href="#">自动驾驶</a>
-						<a href="#">研究价值</a>
-						<a href="#">模式识别</a>
-						<a href="#">自然语言处理</a>
+						<span th:each="catalogList:${catalogList}">
+							<a href="#" th:text="${catalogList.catalog}">文献综述</a>
+						</span>
+
 					</div>
 				</div>
 				<div class="post post-layout-list" data-aos="fade-up" style="position: relative; top: -220px">
@@ -92,78 +86,39 @@
 
 
 
-				<div class="post post-layout-list" data-aos="fade-up">
+				<div th:each="blog:${blogList}" class="post post-layout-list" data-aos="fade-up">
 					<div class="postnormal review ">
 						<div class="post-container review-item">
 							<div class="row review-item-wrapper">
 								<div class="col-sm-3">
 									<a rel="nofollow" href="detail.html">
-										<div class="review-item-img" style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+										<div class="review-item-img" th:style="|background-image: url('/upload/cover/${blog.cover}');|"></div>
 									</a>
 								</div>
-								<div class="col-sm-9 flex-xs-middle">
-									<div class="review-item-title">
-										<a href="detail.html" rel="bookmark">我才不会写年终总结之瞎说篇</a>
+								<div class="col-sm-9 flex-xs-middle" style="color: #494865">
+									<div class="review-item-title" >
+										<a href="detail.html" rel="bookmark" th:text="${blog.title}" style="color: #494865">我才不会写年终总结之瞎说篇</a>
 									</div>
 									<div class="review-item-creator">
 										<b>发布日期：</b>
-										2017-12-30
+										<span th:text="${blog.createTime}"></span>
 									</div>
 									<span class="review-item-info">
 										<b>总浏览量：</b>
-										1203 reads
+										<span th:text="${blog.viewNumber}"></span> reads
 									</span>
 								</div>
 							</div>
 							<div class="review-bg-wrapper">
-								<div class="bg-blur" style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+								<div class="bg-blur" th:style="|background-image: url('/upload/cover/${blog.cover}');|"></div>
 							</div>
 						</div>
 						<div class="post-container">
-							<div class="entry-content">确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</div>
+							<div class="entry-content" th:text="${blog.littleTitle}" style="color: #494865">确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</div>
 							<div class="post-footer">
 								<a class="gaz-btn primary" href="">READ MORE</a>
 								<span class="total-comments-on-post pull-right">
-									<a href="">31 Comments</a>
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="post post-layout-list" data-aos="fade-up">
-					<div class="postnormal review ">
-						<div class="post-container review-item">
-							<div class="row review-item-wrapper">
-								<div class="col-sm-3">
-									<a rel="nofollow" href="detail.html">
-										<div class="review-item-img" style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
-									</a>
-								</div>
-								<div class="col-sm-9 flex-xs-middle">
-									<div class="review-item-title">
-										<a href="detail.html" rel="bookmark">给大家介绍一下</a>
-									</div>
-									<div class="review-item-creator">
-										<b>发布日期：</b>
-										2017-10-02
-									</div>
-									<span class="review-item-info">
-										<b>总浏览量：</b>
-										1600 reads
-									</span>
-								</div>
-							</div>
-							<div class="review-bg-wrapper">
-								<div class="bg-blur" style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
-							</div>
-						</div>
-						<div class="post-container">
-							<div class="entry-content">现在的明星的影响力足以影响国内娱乐圈的"半壁江山"，发条微博，新浪都恐慌好几天，来来来，蹭个热点给大家介绍一下我的女朋友。</div>
-							<div class="post-footer">
-								<a class="gaz-btn primary" href="detail.html">READ MORE</a>
-								<span class="total-comments-on-post pull-right">
-									<a href="">30 Comments</a>
+									<a href=""><span th:text="${blog.commentNumber}">31</span> Comments</a>
 								</span>
 							</div>
 						</div>

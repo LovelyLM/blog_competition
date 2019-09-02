@@ -3,7 +3,6 @@ package com.leiming.blog.service;
 import com.leiming.blog.domain.User;
 import org.springframework.stereotype.Service;
 
-
 public interface UserService {
     void modifyUsername(String username);
 
