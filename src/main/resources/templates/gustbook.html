@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name='referrer' content="never">
 <title>LovelyLM的博客</title>
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -247,12 +248,11 @@
 							<h6 id="replytitle" class="comment-reply-title">
 								<a rel="nofollow" id="cancel-comment-reply-link" href="" style="display: none;">取消</a>
 							</h6>
-							<form action="#" method="post" id="commentform" class="clearfix">
+
 								<div class="clearfix"></div>
 								<div class="author-info">
-									<input type="text" name="author" id="author" placeholder="昵  称 : " value="" tabindex="1" title="Name (required)" />
-									<input type="text" name="email" id="email" placeholder="邮  箱 : " value="" tabindex="2" title="E-mail(will not be published) required" />
-									<input type="text" name="url" id="url" placeholder="网  址 : " value="" tabindex="3" title="Website" />
+									<input required="required" type="text" name="name" id="name" placeholder="昵   称 : " value="" tabindex="2" title="E-mail(will not be published) required" />
+									<input required="required" type="text" name="qq" id="qq" placeholder="Q  Q : " value="" tabindex="3" title="Website" />
 								</div>
 								<div class="clearfix"></div>
 								<input type='hidden' name='comment_post_ID' value='2' id='comment_post_ID' />
@@ -265,15 +265,17 @@
 								</p>
 								<div class="comment-form-info">
 									<div class="real-time-gravatar">
-										<img id="real-time-gravatar" src="statics/images/d41d8cd98f00b204e9800998ecf8427e.png" alt="gravatar头像" />
+										<img id="real-time-gravatar" src="https://qlogo1.store.qq.com/qzone/3074193836/3074193836/100" alt="头像" />
 									</div>
+
 									<p class="input-row">
 										<i class="row-icon"></i>
-										<textarea class="text_area" rows="3" cols="80" name="comment" id="comment" tabindex="4" placeholder="你不说两句吗？(°∀°)ﾉ……"></textarea>
+										<textarea class="text_area" rows="3" cols="80" name="content" id="content" tabindex="4" placeholder="你不说两句吗？(°∀°)ﾉ……"></textarea>
 										<input type="submit" name="submit" class="button" id="submit" tabindex="5" value="发送" />
 									</p>
+
 								</div>
-							</form>
+
 						</div>
 					</div>
 				</section>
@@ -291,6 +293,55 @@
 	<script type='text/javascript' src='statics/js/script.js'></script>
 	<script type='text/javascript' src='statics/js/particles.js'></script>
 	<script type='text/javascript' src='statics/js/aos.js'></script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script src="layer/layer.js"></script>
 </body>
+<script type="text/javascript" th:inline="javascript">
+	$(function () {
+		$("#qq").blur(function () {
+
+			var name = $("#name").val();
+			var qq = $(this).val();
+			$("#real-time-gravatar").attr("src","https://qlogo1.store.qq.com/qzone/"+qq+"/"+qq+"/100");
+			$.ajax({
+				url:[[@{~/saveVisitor}]],
+				data:{"name":name,"qq":qq},
+				type:"post",
+						success:function (data) {
+					layer.msg(data);
+
+				}
+			})
+		})
+		$("#name").blur(function () {
+
+			var name = $("#name").val();
+			var qq = $("#qq").val();
+			$("#real-time-gravatar").attr("src","https://qlogo1.store.qq.com/qzone/"+qq+"/"+qq+"/100");
+			$.ajax({
+				url:[[@{~/saveVisitor}]],
+				data:{"name":name,"qq":qq},
+				type:"post",
+						success:function (data) {
+					layer.msg(data);
+
+				}
+			})
+		})
+		$("#submit").click(function () {
+			var content = $("#content").val();
+			$.ajax({
+				url:[[@{~/saveMessage}]],
+				data:{"content":content},
+				type:"post",
+						success:function (data) {
+					layer.msg(data);
+				}
+		})
+		})
+
+	})
+
+</script>
 
 </html>

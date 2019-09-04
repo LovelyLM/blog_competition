@@ -37,7 +37,7 @@ public class BlogController {
         if (servletRequest.getSession().getAttribute("cover")!=null){
             blog.setCover((String) servletRequest.getSession().getAttribute("cover"));
         }else {
-            blog.setCover("default.jpg");
+            blog.setCover("default.jpeg");
         }
         blog.setCommentNumber(0L);
         blog.setViewNumber(0L);

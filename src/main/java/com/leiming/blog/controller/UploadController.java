@@ -1,7 +1,4 @@
 package com.leiming.blog.controller;
-import java.util.Base64;
-import java.util.Base64.Encoder;
-import java.util.Base64.Decoder;
 
 import com.leiming.blog.service.UserService;
 import org.junit.Test;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -71,6 +67,7 @@ public class UploadController {
         servletRequest.getSession().setAttribute("mood",filename);
         System.out.println("新的原始文件:"+filename);
         String path = ResourceUtils.getURL("classpath:").getPath()+"static/upload/mood";
+        System.out.println("hhhhhhhhhhhhhhhhhhhh-------:"+path);
         File dest = null;
         try {
             dest = new File(URLDecoder.decode(path+"/"+filename,"utf-8"));
