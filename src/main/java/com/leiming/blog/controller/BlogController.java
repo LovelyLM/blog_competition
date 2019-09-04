@@ -26,6 +26,7 @@ public class BlogController {
     @Autowired
     private CatalogService catalogsService;
     @RequestMapping("/saveBlog")
+    @ResponseBody
     public String saveMood(Blog blog, HttpServletRequest servletRequest, String catalogString){
 
         Date date = new Date(System.currentTimeMillis());
@@ -55,19 +56,21 @@ public class BlogController {
         servletRequest.getSession().setAttribute("cover","default.jpeg");
         return "redirect:/blog";
     }
-    @RequestMapping("findAllBlog")
+    @RequestMapping("blog")
+    @ResponseBody
     public ModelAndView findAllBlog(Model model){
         List<Blog> blogList = blogService.findAllBlog();
         List<Catalog> catalogList= catalogsService.findAllCatalog();
         model.addAttribute("blogList",blogList);
         model.addAttribute("catalogList",catalogList);
-        return new ModelAndView("/blog","blogModel",model);
+        return new ModelAndView("blog.html","blogModel",model);
     }
     @RequestMapping("blogDetail")
+    @ResponseBody
     public ModelAndView blogDetail(Model model,String id){
         System.out.println(id);
         Blog blog = blogService.findAllById(Long.valueOf(id));
         model.addAttribute("blog",blog);
-        return new ModelAndView("/detail","blogModel",model);
+        return new ModelAndView("detail.html","blogModel",model);
     }
 }

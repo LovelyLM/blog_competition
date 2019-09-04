@@ -47,4 +47,9 @@ public class UserServiceImpl implements UserService {
         userRepository.modifyImage(image);
 
     }
+
+    @Override
+    public User findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
+    }
 }

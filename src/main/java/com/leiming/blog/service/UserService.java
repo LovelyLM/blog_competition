@@ -15,4 +15,6 @@ public interface UserService {
     void modifyHead(String head);
 
     void modifyImage(String Image);
+
+    User findUserByUsername(String username);
 }

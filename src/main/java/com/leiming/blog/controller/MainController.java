@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -24,16 +25,13 @@ public class MainController {
         return "redirect:/index";
     }
     @RequestMapping("/index")
+    @ResponseBody
     public ModelAndView index(Model model){
         List<Blog> blogList = blogService.findAllBlog();
         List<Mood> moodList =moodService.findAllMood();
         model.addAttribute("moodList",moodList);
         model.addAttribute("blogList",blogList);
-        return new ModelAndView("/index","indexModel",model);
-    }
-    @RequestMapping("/mood")
-    public String mood(){
-        return "mood.html";
+        return new ModelAndView("index.html","indexModel",model);
     }
     @RequestMapping("/gustbook")
     public String gustbook(){
@@ -42,10 +40,6 @@ public class MainController {
     @RequestMapping("/link")
     public String link(){
         return "link.html";
-    }
-    @RequestMapping("/blog")
-    public String blog(){
-        return "blog.html";
     }
     @RequestMapping("/image")
     public String image(){
@@ -70,5 +64,9 @@ public class MainController {
     @RequestMapping("/addImage")
     public String imageImage(){
         return "add-image.html";
+    }
+    @RequestMapping("/visitorLogin")
+    public String visitorLogin(){
+        return "login.html";
     }
 }

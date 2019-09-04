@@ -1,7 +1,5 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
- xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 
 <head>
@@ -19,6 +17,29 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 <!--input-->
 <script type="text/javascript" src="statics/js/classie.js"></script>
 <link rel="stylesheet" type="text/css" href="statics/css/component.css" />
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="lib/js/editormd/css/editormd.css">
+	<script src="lib/js/editormd/editormd.amd.min.js"></script>
+	<link rel="stylesheet" href="lib/js/editormd/css/editormd.preview.css">
+	<script src="lib/js/editormd/editormd.js"></script>
+	<script src="lib/js/editormd/lib/marked.min.js"></script>
+	<script src="lib/js/editormd/lib/prettify.min.js"></script>
+	<style>
+		h1 {
+			text-align: center;
+			color: black;
+
+		}
+	</style>
+	<script type="text/javascript">
+		$(function() {
+			var testView = editormd.markdownToHTML("test-markdown-view", {
+				// markdown : "[TOC]\n### Hello world!\n## Heading 2", // Also, you can dynamic set Markdown text
+				// htmlDecode : true,  // Enable / disable HTML tag encode.
+				// htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+			});
+		});
+	</script>
 
 </head>
 <body class="home blog custom-background round-avatars">
@@ -30,10 +51,21 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 			<div class="post post-layout-list" data-aos="fade-up">
 				<div class="status_list_item icon_kyubo">
 					<div class="status_section">
+						<div id="test-markdown-view">
+							<!-- Server-side output Markdown text -->
+							<textarea id="dsa" style="display:none;"># 个人简介</textarea>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="post post-layout-list" data-aos="fade-up" sec:authorize = "hasAnyAuthority('ADMIN')">
+				<div class="status_list_item icon_kyubo">
+					<div class="status_section">
 						<p class="status_btn">头像：</p>
 						<br />
 						<div align="center" class="box" style="width: 300px; height: 200px; position: relative; right: -70px; bottom: 0px">
-							<img id="image" th:src="|upload/ico_original/${owner.imageOriginal}|">
+							<img id="image" th:src="|upload/ico_original/${owner.imageOriginal}|" onerror="this.src='statics/images/default.jpeg'">
 						</div>
 
 						<div class="small" style="overflow: hidden; width: 130px; height: 130px; position: relative; right: -536px; bottom: 164px"></div>
@@ -54,8 +86,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 					</div>
 				</div>
 			</div>
+
 			<!-- 修改名称 -->
-			<div class="post post-layout-list" data-aos="fade-up">
+			<div class="post post-layout-list" data-aos="fade-up" sec:authorize = "hasAnyAuthority('ADMIN')">
 				<div class="status_list_item icon_kyubo">
 					<div class="status_section">
 						<div class="col-md-5 mb-3">
@@ -83,7 +116,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 
 
 			<!-- 修改密码 -->
-			<div class="post post-layout-list" data-aos="fade-up">
+			<div class="post post-layout-list" data-aos="fade-up" sec:authorize = "hasAnyAuthority('ADMIN')">
 				<div class="status_list_item icon_kyubo">
 					<div class="status_section">
 						<div class="col-md-5 mb-3">
@@ -108,7 +141,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 				</div>
 			</div>
 			<!-- 修改签名 -->
-			<div class="post post-layout-list" data-aos="fade-up">
+			<div class="post post-layout-list" data-aos="fade-up" sec:authorize = "hasAnyAuthority('ADMIN')">
 				<div class="status_list_item icon_kyubo">
 					<div class="status_section">
 						<div class="col-md-5 mb-3">
@@ -132,16 +165,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 					</div>
 				</div>
 			</div>
+			</div>
 
-			<!-- <div class="post post-layout-list" data-aos="fade-up">
-				<div class="status_list_item icon_kyubo">
-					<div class="status_section">
-						<p class="status_btn">姓名：</p>
-						<p class="section_p">相隔上一次的更新我掰手指数一数，下意识的双腿一软，给各位小哥哥小姐姐们跪下了。自从有了对象后，周末几乎落下了主题的进度（邪魅的笑）。一边开发新的主题，一边收集您们给我反馈回来的"臭虫"，还有新的主题后台看见了一些大神在...</p>
-					</div>
-				</div>
-			</div> -->
-		</div>
 	</div>
 	<form id="uploadImage" method="post" enctype="multipart/form-data">
 		<input type="file" name="file" id="headImageInput" style="display: none" accept="image/*">
@@ -241,7 +266,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 				// dataType:"json",
 				processData:false,
 				success:function (data) {
-					cropper.replace([[@{~/upload/}]]+data,false);
+					cropper.replace([[@{~/upload/ico_original/}]]+data,false);
 				},
 				error:function () {
 					alert("上传失败！")

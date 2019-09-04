@@ -19,11 +19,12 @@ import java.util.List;
 public class MoodController {
     @Autowired
     private MoodService moodService;
-    @RequestMapping("/findMood")
+    @RequestMapping("/mood")
+    @ResponseBody
     public ModelAndView findMood(Model model){
         List<Mood> moodList =moodService.findAllMood();
         model.addAttribute("moodList",moodList);
-        return new ModelAndView("/mood","moodModel",moodList);
+        return new ModelAndView("mood.html","moodModel",moodList);
     }
     @RequestMapping("/saveMood")
     public String saveMood(Mood mood, HttpServletRequest servletRequest){
@@ -38,7 +39,7 @@ public class MoodController {
         mood.setUser(owner);
         moodService.save(mood);
         servletRequest.getSession().setAttribute("mood","default.jpeg");
-        return "redirect:/findMood";
+        return "redirect:/mood";
     }
     @RequestMapping("/deleteMood")
     @ResponseBody

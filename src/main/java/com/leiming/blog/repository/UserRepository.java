@@ -23,4 +23,6 @@ public interface UserRepository extends CrudRepository<User,Long> {
     @Query(value = "update user set image_original =?1 where id =1",nativeQuery = true)
     @Modifying
     void modifyImage(String image);
+    @Query(value = "select * from user where username = ?1",nativeQuery = true)
+    User findUserByUsername(String username);
 }

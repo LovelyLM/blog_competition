@@ -36,6 +36,7 @@ body.custom-background {
 	<div id="main" class="content">
 		<div class="container">
 			<section class="post_content">
+				<div sec:authorize = "hasAnyAuthority('ADMIN')">
 				<header class="post_header">
 					<p class="status_btn" style="font-size: xx-large; color: #918f90;">此时的心情</p>
 				</header>
@@ -70,6 +71,7 @@ body.custom-background {
 					</button>
 				</div>
 				</form>
+				</div>
 				<br>
 				<header class="post_header">
 					<p class="status_btn" style="font-size: xx-large; color: #918f90;">回忆</p>
@@ -90,7 +92,7 @@ body.custom-background {
 										</div>
 									</div>
 								</div>
-								<div class="button_su" style="width: 80px; height: 40px; position: relative; left: 600px; bottom: -40px">
+								<div class="button_su" style="width: 80px; height: 40px; position: relative; left: 600px; bottom: -40px" sec:authorize = "hasAnyAuthority('ADMIN')">
 									<span class="su_button_circle"> </span>
 									<a th:onclick="|dellMood(${mood.id})|" class="button_su_inner">
 										<span class="status_btn" style="color: white; position: relative; right: 25px; bottom: 13px">删除</span>
@@ -132,7 +134,7 @@ body.custom-background {
 					type:"post",
 							success:function (data) {
 						layer.msg("删除成功！",function () {
-							window.location = [[@{~/findMood}]]
+							window.location = [[@{~/mood}]]
 						})
 
 						}
