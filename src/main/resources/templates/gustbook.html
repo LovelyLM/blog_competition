@@ -45,7 +45,7 @@
 						<div class="slide">
 							<a class="btn-slide" title="switch down">
 								<i class="iconfont">&#xe615;</i>
-								折叠评论区
+								折叠评论
 							</a>
 						</div>
 					</div>
@@ -84,8 +84,8 @@
 				<section class="comments">
 					<div class="comments-main">
 						<div id="comments-list-title">
-							<span>160</span>
-							条评论
+							<span th:text="${messagePageBean.totalCount}">160</span>
+							条留言
 						</div>
 						<div id="loading-comments">
 							<div class="host">
@@ -95,11 +95,11 @@
 							</div>
 						</div>
 						<ul class="commentwrap">
-							<li class="comment even thread-even depth-1" id="li-comment-">
+							<li th:each="message:${messagePageBean.list}" class="comment even thread-even depth-1" id="li-comment-">
 								<div id="comment-936" class="comment_body contents">
 									<div class="profile">
-										<a href="">
-											<img src="statics/images/d9885b7dc7a78f9cadfb81be7512d630.png" class="gravatar" alt="沺">
+										<a th:href="'https://user.qzone.qq.com/'+${message.visitor.qq}" target="_blank">
+											<img th:src="'https://qlogo1.store.qq.com/qzone/'+${message.visitor.qq}+'/'+${message.visitor.qq}+'/100'" class="gravatar" alt="沺">
 										</a>
 									</div>
 									<div class="main shadow">
@@ -107,143 +107,41 @@
 											<section class="commeta">
 												<div class="shang">
 													<h4 class="author">
-														<a href="" target="_blank">
-															<img src="statics/images/d9885b7dc7a78f9cadfb81be7512d630.png" class="gravatarsmall" alt="沺">
-															沺
+														<a th:href="'https://user.qzone.qq.com/'+${message.visitor.qq}" target="_blank">
+															<img th:src="'https://qlogo1.store.qq.com/qzone/'+${message.visitor.qq}+'/'+${message.visitor.qq}+'/100'" alt="沺">
+															<span th:text="${message.visitor.name}">LovelyLM</span>
 														</a>
 													</h4>
 												</div>
 											</section>
 										</div>
 										<div class="body">
-											<p>每日惯例来检查，生意兴隆通四海</p>
+											<p th:text="${message.content}"></p>
 										</div>
 										<div class="xia info">
 											<span>
-												<time datetime="2019-07-16">2019年7月16日</time>
-											</span>
-											<span>
-												<a rel='nofollow' class='comment-reply-link' href='' onclick='return addComment.moveForm( "comment-936", "936", "respond", "2" )' aria-label='回复给沺'>回复</a>
+												<time th:text="${message.creatTime}" datetime="2019-07-16">2019年7月16日</time>
 											</span>
 										</div>
 									</div>
 								</div>
 							</li>
-							<!-- #comment-## -->
-							<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-">
-								<div id="comment-949" class="comment_body contents">
-									<div class="profile">
-										<a href="">
-											<img src="statics/images/573594c6f0bb6559381e5acf27845208.jpg" class="gravatar" alt="吖远zzy">
-										</a>
-									</div>
-									<div class="main shadow">
-										<div class="commentinfo">
-											<section class="commeta">
-												<div class="shang">
-													<h4 class="author">
-														<a href="" target="_blank">
-															<img src="statics/images/573594c6f0bb6559381e5acf27845208.jpg" class="gravatarsmall" alt="吖远zzy">
-															吖远zzy
-														</a>
-													</h4>
-												</div>
-											</section>
-										</div>
-										<div class="body">
-											<p>(๑•॒̀ ູ॒•́๑) 这主题不错，留个脚印~</p>
-										</div>
-										<div class="xia info">
-											<span>
-												<time datetime="2019-07-03">2019年7月3日</time>
-											</span>
-											<span>
-												<a rel='nofollow' class='comment-reply-link' href='' onclick='return addComment.moveForm( "comment-949", "949", "respond", "2" )' aria-label='回复给吖远zzy'>回复</a>
-											</span>
-										</div>
-									</div>
-								</div>
-							</li>
-							<!-- #comment-## -->
-							<li class="comment even thread-even depth-1" id="li-comment-">
-								<div id="comment-959" class="comment_body contents">
-									<div class="profile">
-										<a href="">
-											<img src="statics/images/b8b61f04b19de2e728bfef9dcc4332d5.jpeg" class="gravatar" alt="vxZoo">
-										</a>
-									</div>
-									<div class="main shadow">
-										<div class="commentinfo">
-											<section class="commeta">
-												<div class="shang">
-													<h4 class="author">
-														<a href="" target="_blank">
-															<img src="statics/images/b8b61f04b19de2e728bfef9dcc4332d5.jpeg" class="gravatarsmall" alt="vxZoo">
-															vxZoo
-														</a>
-													</h4>
-												</div>
-											</section>
-										</div>
-										<div class="body">
-											<p>俊杰男神，小弟给您拜年了。新年行大运，阖家欢乐，幸福安康。</p>
-										</div>
-										<div class="xia info">
-											<span>
-												<time datetime="2019-07-16">2019年7月16日</time>
-											</span>
-											<span>
-												<a rel='nofollow' class='comment-reply-link' href='' onclick='return addComment.moveForm( "comment-959", "959", "respond", "2" )' aria-label='回复给vxZoo'>回复</a>
-											</span>
-										</div>
-									</div>
-								</div>
-							</li>
-							<!-- #comment-## -->
-							<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-">
-								<div id="comment-986" class="comment_body contents">
-									<div class="profile">
-										<a href="">
-											<img src="statics/images/b8b61f04b19de2e728bfef9dcc4332d5.jpeg" class="gravatar" alt="vxZoo">
-										</a>
-									</div>
-									<div class="main shadow">
-										<div class="commentinfo">
-											<section class="commeta">
-												<div class="shang">
-													<h4 class="author">
-														<a href="" target="_blank">
-															<img src="statics/images/b8b61f04b19de2e728bfef9dcc4332d5.jpeg" class="gravatarsmall" alt="vxZoo">
-															vxZoo
-														</a>
-													</h4>
-												</div>
-											</section>
-										</div>
-										<div class="body">
-											<p>打卡</p>
-										</div>
-										<div class="xia info">
-											<span>
-												<time datetime="2019-07-29">2019年7月29日</time>
-											</span>
-											<span>
-												<a rel='nofollow' class='comment-reply-link' href='' onclick='return addComment.moveForm( "comment-986", "986", "respond", "2" )' aria-label='回复给vxZoo'>回复</a>
-											</span>
-										</div>
-									</div>
-								</div>
-							</li>
+
 							<!-- #comment-## -->
 						</ul>
+
 						<nav id="comments-navi">
-							<a class="prev page-numbers" href=""> <</a>
-							<a class='page-numbers' href='#'>1</a>
-							<span class="page-numbers dots">&hellip;</span>
-							<a class='page-numbers' href='#'>15</a>
-							<a class='page-numbers' href='#'>16</a>
-							<span aria-current='page' class='page-numbers current'>17</span>
+							<a class="prev page-numbers" th:href="@{'/findAllMessage?currentPage='+${messagePageBean.currentPage-1}}"> <</a>
+							<a class='page-numbers' th:href="@{'/findAllMessage?currentPage='+${messagePageBean.currentPage-2}}" th:if="${messagePageBean.currentPage-2 gt 0}" th:text="${messagePageBean.currentPage-2}">1</a>
+							<a class='page-numbers' th:href="@{'/findAllMessage?currentPage='+${messagePageBean.currentPage-1}}" th:if="${messagePageBean.currentPage-1 gt 0}" th:text="${messagePageBean.currentPage-1}">1</a>
+							<span aria-current='page' class='page-numbers current' th:text="${messagePageBean.currentPage}">17</span>
+<!--							<span class="page-numbers dots" th:if="${messagePageBean.totalPage gt 5}">&hellip;</span>-->
+							<a class='page-numbers' th:href="@{'/findAllMessage?currentPage='+${messagePageBean.currentPage+1}}" th:if="${messagePageBean.currentPage+1 le messagePageBean.totalPage}" th:text="${messagePageBean.currentPage+1}">15</a>
+							<a class='page-numbers' th:href="@{'/findAllMessage?currentPage='+${messagePageBean.currentPage+2}}" th:if="${messagePageBean.currentPage+2 le messagePageBean.totalPage}" th:text="${messagePageBean.currentPage+2}">16</a>
+							<a class="prev page-numbers" th:href="@{'/findAllMessage?currentPage='+${messagePageBean.currentPage+1}}"> ></a>
+
 						</nav>
+
 						<div id="respond" class="comment-respond">
 							<h6 id="replytitle" class="comment-reply-title">
 								<a rel="nofollow" id="cancel-comment-reply-link" href="" style="display: none;">取消</a>
@@ -330,15 +228,31 @@
 		})
 		$("#submit").click(function () {
 			var content = $("#content").val();
-			$.ajax({
-				url:[[@{~/saveMessage}]],
-				data:{"content":content},
-				type:"post",
-						success:function (data) {
-					layer.msg(data);
-				}
+			if ($("#qq").val()==""||$("#name").val()==""||$("#content").val()==""){
+				layer.msg("请检查输入的信息是否正确！")
+			}else {
+				$.ajax({
+					url:[[@{~/saveMessage}]],
+					data:{"content":content},
+					type:"post",
+							success:function (data) {
+
+						if (data=="ok"){					layer.msg("留言成功！",function () {
+							window.location = [[@{~/findAllMessage}]]
+							})}else {
+							layer.msg("请检查所填信息是否正确！")
+						}
+					}
+				})
+		}
+
+
 		})
-		})
+
+
+
+
+
 
 	})
 

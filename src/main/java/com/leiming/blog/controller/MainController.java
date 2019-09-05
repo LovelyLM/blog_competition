@@ -35,7 +35,7 @@ public class MainController {
     }
     @RequestMapping("/gustbook")
     public String gustbook(){
-        return "gustbook.html";
+        return "redirect:/findAllMessage";
     }
     @RequestMapping("/link")
     public String link(){

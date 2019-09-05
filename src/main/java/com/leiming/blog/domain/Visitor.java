@@ -1,6 +1,7 @@
 package com.leiming.blog.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,14 @@ public class Visitor {
     @JoinColumn(name = "visitor_id")
     private List<Message> messages;
 
+
+    @OneToMany(targetEntity = BlogComment.class)
+    @JoinColumn(name = "visitor_id")
+    private List<BlogComment> blogComments = new ArrayList<>();
+
+    protected Visitor(){
+
+    }
     public Long getId() {
         return id;
     }
@@ -55,24 +64,19 @@ public class Visitor {
         this.messages = messages;
     }
 
-    protected Visitor() {
+    public List<BlogComment> getBlogComments() {
+        return blogComments;
     }
 
-    @Override
-    public String toString() {
-        return "Visitor{" +
-                "id=" + id +
-                ", image='" + image + '\'' +
-                ", qq='" + qq + '\'' +
-                ", name='" + name + '\'' +
-                ", messages=" + messages +
-                '}';
+    public void setBlogComments(List<BlogComment> blogComments) {
+        this.blogComments = blogComments;
     }
 
-    public Visitor(String image, String qq, String name, List<Message> messages) {
+    public Visitor(String image, String qq, String name, List<Message> messages, List<BlogComment> blogComments) {
         this.image = image;
         this.qq = qq;
         this.name = name;
         this.messages = messages;
+        this.blogComments = blogComments;
     }
 }

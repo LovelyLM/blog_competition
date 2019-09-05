@@ -21,6 +21,7 @@ public class VisitorController {
         System.out.println(visitor+"--------");
         if (checkQQ(visitor.getQq())){
             if (visitor.getQq()==""||visitor.getName()==""){
+                servletRequest.getSession().setAttribute("visitor",null);
                 return "请检查qq与昵称是否输入正确";
             }
             Visitor byQq = visitorService.findByQq(visitor.getQq());
@@ -39,6 +40,7 @@ public class VisitorController {
             }
 
         }else {
+            servletRequest.getSession().setAttribute("visitor",null);
             return "qq不合法！";
         }
 

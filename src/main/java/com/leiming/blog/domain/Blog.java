@@ -1,7 +1,9 @@
 package com.leiming.blog.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,6 +31,15 @@ public class Blog {
     )
     private Set<Catalog> catalogs = new HashSet<Catalog>();
 
+
+    @OneToMany(targetEntity = BlogComment.class)
+    @JoinColumn(name = "blog_id")
+    private List<BlogComment> blogComments = new ArrayList<>();
+
+
+    protected Blog(){
+
+    }
     @Override
     public String toString() {
         return "Blog{" +
@@ -44,40 +55,8 @@ public class Blog {
                 ", littleContent='" + littleContent + '\'' +
                 ", mood=" + mood +
                 ", catalogs=" + catalogs +
+                ", blogComments=" + blogComments +
                 '}';
-    }
-
-    public Blog() {
-    }
-
-    public Set<Catalog> getCatalogs() {
-        return catalogs;
-    }
-
-    public void setCatalogs(Set<Catalog> catalogs) {
-        this.catalogs = catalogs;
-    }
-
-    public Blog(String title, String content, String createTime, Long viewNumber, Long commentNumber, String cover, String image, String littleTitle, String littleContent, Mood mood, Set<Catalog> catalogs) {
-        this.title = title;
-        this.content = content;
-        this.createTime = createTime;
-        this.viewNumber = viewNumber;
-        this.commentNumber = commentNumber;
-        this.cover = cover;
-        this.image = image;
-        this.littleTitle = littleTitle;
-        this.littleContent = littleContent;
-        this.mood = mood;
-        this.catalogs = catalogs;
-    }
-
-    public Mood getMood() {
-        return mood;
-    }
-
-    public void setMood(Mood mood) {
-        this.mood = mood;
     }
 
     public Long getId() {
@@ -158,5 +137,44 @@ public class Blog {
 
     public void setLittleContent(String littleContent) {
         this.littleContent = littleContent;
+    }
+
+    public Mood getMood() {
+        return mood;
+    }
+
+    public void setMood(Mood mood) {
+        this.mood = mood;
+    }
+
+    public Set<Catalog> getCatalogs() {
+        return catalogs;
+    }
+
+    public void setCatalogs(Set<Catalog> catalogs) {
+        this.catalogs = catalogs;
+    }
+
+    public List<BlogComment> getBlogComments() {
+        return blogComments;
+    }
+
+    public void setBlogComments(List<BlogComment> blogComments) {
+        this.blogComments = blogComments;
+    }
+
+    public Blog(String title, String content, String createTime, Long viewNumber, Long commentNumber, String cover, String image, String littleTitle, String littleContent, Mood mood, Set<Catalog> catalogs, List<BlogComment> blogComments) {
+        this.title = title;
+        this.content = content;
+        this.createTime = createTime;
+        this.viewNumber = viewNumber;
+        this.commentNumber = commentNumber;
+        this.cover = cover;
+        this.image = image;
+        this.littleTitle = littleTitle;
+        this.littleContent = littleContent;
+        this.mood = mood;
+        this.catalogs = catalogs;
+        this.blogComments = blogComments;
     }
 }

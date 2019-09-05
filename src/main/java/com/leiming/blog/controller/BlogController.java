@@ -1,8 +1,11 @@
 package com.leiming.blog.controller;
 
 import com.leiming.blog.domain.Blog;
+import com.leiming.blog.domain.BlogComment;
 import com.leiming.blog.domain.Catalog;
 import com.leiming.blog.domain.User;
+import com.leiming.blog.dto.PageBean;
+import com.leiming.blog.service.BlogCommentService;
 import com.leiming.blog.service.BlogService;
 import com.leiming.blog.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,8 @@ public class BlogController {
     private BlogService blogService;
     @Autowired
     private CatalogService catalogsService;
+    @Autowired
+    private BlogCommentService blogCommentService;
     @RequestMapping("/saveBlog")
     @ResponseBody
     public String saveMood(Blog blog, HttpServletRequest servletRequest, String catalogString){
@@ -67,9 +72,10 @@ public class BlogController {
     }
     @RequestMapping("blogDetail")
     @ResponseBody
-    public ModelAndView blogDetail(Model model,String id){
-        System.out.println(id);
+    public ModelAndView blogDetail(Model model,String id,Integer currentPage){
         Blog blog = blogService.findAllById(Long.valueOf(id));
+        PageBean blogCommentPageBean = blogCommentService.getMessagePageBean(Long.valueOf(id),currentPage);
+        model.addAttribute("blogCommentPageBean",blogCommentPageBean);
         model.addAttribute("blog",blog);
         return new ModelAndView("detail.html","blogModel",model);
     }
