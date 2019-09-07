@@ -15,4 +15,12 @@ public interface BlogService {
     List<Blog> findAllBlogByCreateTime();
 
     List<String> findAllBlogTimeLine();
+
+    void delBlog(String blogId);
+
+    List<Blog> searchBlog(String keyWord);
+
+    void updateReads(Long blogId);
+
+    void updateComment(Long blogId);
 }

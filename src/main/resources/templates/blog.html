@@ -52,8 +52,8 @@
 						</label>
 					</span>
 					<!-- 搜索按钮 -->
-					<button class="bubbly-button" style="width: 150px; height: 50px; position: relative; left: 200px; bottom: 89px">
-						<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 5px">去吧！！</span>
+					<button onclick="search()" class="bubbly-button" style="width: 150px; height: 50px; position: relative; left: 200px; bottom: 89px">
+						<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 5px" >去吧！！</span>
 					</button>
 				</div>
 
@@ -62,7 +62,7 @@
 				<div class="post post-layout-list" data-aos="fade-up" style="position: relative; left: 0px; top: 300px">
 					<div class="tagcloud status_btn">
 						<span th:each="catalogList:${catalogList}">
-							<a href="#" th:text="${catalogList.catalog}">文献综述</a>
+							<a th:href="@{'/searchCatalog?catalogId='+${catalogList.id}}" th:text="${catalogList.catalog}">文献综述</a>
 						</span>
 
 					</div>
@@ -118,7 +118,7 @@
 							<div class="post-footer">
 								<a class="gaz-btn primary" th:href="@{'/blogDetail?id='+${blog.id}}">READ MORE</a>
 								<span class="total-comments-on-post pull-right">
-									<a href=""><span th:text="${blog.commentNumber}">31</span> Comments</a>
+									<a th:href="@{'/blogDetail?id='+${blog.id}}"><span th:text="${blog.commentNumber}"></span> Comments</a>
 								</span>
 							</div>
 						</div>
@@ -240,5 +240,14 @@
 			classname[i].addEventListener('click', animateButton, false);
 		}
 	</script>
+	<script type="text/javascript" th:inline="javascript">
+		function search() {
+			var keyWord = $("#input-16").val();
+			window.open([[@{~/search?keyWord=}]]+keyWord)
+
+		}
+
+	</script>
+
 </body>
 </html>

@@ -8,6 +8,8 @@
 <meta name="keywords" content="" />
 <link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script src="layer/layer.js"></script>
+
 </head>
 
 <body class="home blog custom-background round-avatars">
@@ -31,8 +33,11 @@
 									<a th:href="@{'/blogDetail?id='+${blog.id}}">
 										<span class="time" th:text="${#strings.substring(blog.createTime,5,10)}">8-15</span>
 										<span th:text="${blog.title}"></span>
-										<span th:text="|(${blog.viewNumber})|">(10)</span>
+										<span th:text="|(${blog.viewNumber}浏览量)|">(10)</span>
+										<span th:onclick="|dellBlog(${blog.id},event)|" style="float: right" sec:authorize = "hasAnyAuthority('ADMIN')">删除</span>
 									</a>
+
+
 								</div>
 							</div>
 						</div>
@@ -49,6 +54,45 @@
 	<script type='text/javascript' src='statics/js/script.js'></script>
 	<script type='text/javascript' src='statics/js/particles.js'></script>
 	<script type='text/javascript' src='statics/js/aos.js'></script>
+
+	<script type="text/javascript" th:inline="javascript">
+			function dellBlog (id,event) {
+				// alert("ok")
+				console.log(id);
+				console.log(event);
+
+				event.preventDefault();
+				layer.confirm('你确定要删除吗?', {icon: 3, title:'提示'}, function(index){
+					$.ajax({
+						url:[[@{~/delBlog}]],
+						data:{"blogId":id},
+						type:"post",
+								success:function (data) {
+							if (data=="ok"){
+								layer.msg("删除成功！");
+								setTimeout( function(){
+									location.reload();
+								}, 1000 );
+
+							}else {
+								layer.msg("删除失败，服务器错误！");
+								setTimeout( function(){
+									location.reload();
+								}, 1000 );
+							}
+						}
+					})
+					layer.msg("删除成功")
+					layer.close(index);
+				});
+			}
+
+
+
+
+
+	</script>
+
 </body>
 
 </html>

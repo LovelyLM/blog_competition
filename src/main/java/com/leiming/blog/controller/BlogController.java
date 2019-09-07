@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -73,10 +74,20 @@ public class BlogController {
     @RequestMapping("blogDetail")
     @ResponseBody
     public ModelAndView blogDetail(Model model,String id,Integer currentPage){
+        blogService.updateReads(Long.valueOf(id));
         Blog blog = blogService.findAllById(Long.valueOf(id));
         PageBean blogCommentPageBean = blogCommentService.getMessagePageBean(Long.valueOf(id),currentPage);
         model.addAttribute("blogCommentPageBean",blogCommentPageBean);
         model.addAttribute("blog",blog);
         return new ModelAndView("detail.html","blogModel",model);
+    }
+    @RequestMapping(value = "/delBlog",method = RequestMethod.POST )
+    @ResponseBody
+    public String delBlog(String blogId){
+        if (blogId!=null&&blogId!=""){
+            blogService.delBlog(blogId);
+            return "ok";
+        }
+        return "no";
     }
 }

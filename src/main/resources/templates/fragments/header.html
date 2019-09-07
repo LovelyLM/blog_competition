@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="layui/css/layui.css">
+	<script src="layer/layer.js"></script>
+
 
 </head>
 
@@ -73,6 +75,9 @@
 									<li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
 										<a th:href="@{~/gustbook}">留言</a>
 									</li>
+									<li sec:authorize = "hasAnyAuthority('ADMIN')" id="logout" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
+										<a th:href="@{~/logout}">退出登录</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -94,7 +99,8 @@
 
 				<h3 class="blog-description">
 					<p style="font-size:xx-large; color: white;" th:text="${owner.username}">Lain</p>
-					<p style="font-size:large; color: white;" th:text="${owner.personalSign}">www.sikiedu.com</p>
+
+					<p style="font-size:large; color: white;line-height:50px" th:text="${owner.personalSign}">www.sikiedu.com</p>
 				</h3>
 			</div>
 
@@ -119,6 +125,13 @@
 		</header>
 
 	</div>
+<script>
+	$(function () {
+		$("#logout").click(function () {
+			layer.msg("退出成功！")
+		})
+	})
+</script>
 
 
 </body>

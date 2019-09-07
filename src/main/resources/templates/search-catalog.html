@@ -16,27 +16,30 @@
 
 		<div class="container">
 
-			<h1 class="page-title" >以&ldquo;<span th:text="${keyWord}"></span>&rdquo;为关键字</h1>
+			<h1 class="page-title" >&ldquo;<span th:text="${cataLog}"></span>&rdquo;分类下</h1>
 
-			<p class="Searchmeta">共计 <span th:text="${blogListSize}"></span> 篇文章</p>
+			<p class="Searchmeta">共计 <span th:text="${blogSize}"></span> 篇文章</p>
 
 			<div class="location">
 				当前位置：
 				<a th:href="@{~/index}" >首页</a>
-				<span th:text="'&raquo; 搜索结果 &raquo; '+${keyWord}"></span>
+				<span th:text="'&raquo; 搜索结果 &raquo; '+${cataLog}"></span>
 			</div>
 
 			<div class="posts-list js-posts" th:each="blog:${blogList}">
 
 				<div class="archive-post">
 
-					<div class="type">
-						<div class="mask">
-							<i class="iconfont">&#xe603;</i>
+					<div class="type" style="cursor:pointer">
+						<a th:href="@{'/blogDetail?id='+${blog.id}}" style="cursor:pointer">
+						<div class="mask" th:style="|background-image: url('/upload/cover/${blog.cover}');|">
+
 						</div>
+
+						</a>
 					</div>
 
-					<h2 class="archive-title" style="color: #">
+					<h2 class="archive-title" style="padding-top: 10px">
 
 						<span>
 
@@ -48,9 +51,6 @@
 
 					</h2>
 
-					<div class="post-category">
-						<a th:href="@{'/searchCatalog?catalogId='+${catalog.id}}" rel="category tag"  th:each="catalog:${blog.catalogs}" th:text="${catalog.catalog}">Happen</a>
-					</div>
 
 				</div>
 

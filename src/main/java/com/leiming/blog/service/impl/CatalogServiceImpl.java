@@ -28,4 +28,9 @@ public class CatalogServiceImpl implements CatalogService {
     public List<Catalog> findAllCatalog() {
         return (List<Catalog>) catalogRepository.findAll();
     }
+
+    @Override
+    public Catalog findAllByCatalogId(Long catalogId) {
+        return catalogRepository.findById(catalogId).get();
+    }
 }

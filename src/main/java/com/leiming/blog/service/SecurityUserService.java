@@ -22,7 +22,6 @@ public class SecurityUserService implements UserDetailsService {
         if (user == null){
             throw new UsernameNotFoundException(username);
         }
-        System.out.println(username);
         return new SocialUser(user.getUsername(),passwordEncoder.encode(user.getPassword()), AuthorityUtils.commaSeparatedStringToAuthorityList("ADMIN"));
     }
 }

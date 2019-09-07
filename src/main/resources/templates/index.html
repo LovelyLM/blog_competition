@@ -41,7 +41,7 @@
 							</label>
 						</span>
 						<!-- 搜索按钮 -->
-						<button class="bubbly-button" style="width: 150px; height: 50px; position: relative; left: 200px; bottom: 89px">
+						<button onclick="search()" class="bubbly-button" style="width: 150px; height: 50px; position: relative; left: 200px; bottom: 89px">
 							<span class="status_btn" style="color: white; position: relative; right: 0px; bottom: 5px">去吧！！</span>
 						</button>
 					</div>
@@ -82,7 +82,7 @@
 								<div class="post-footer">
 									<a class="gaz-btn primary" th:href="@{'/blogDetail?id='+${blog.id}}">READ MORE</a>
 									<span class="total-comments-on-post pull-right">
-										<a href=""><span th:text="${blog.commentNumber}">31</span> Comments</a>
+										<a th:href="@{'/blogDetail?id='+${blog.id}}"><span th:text="${blog.commentNumber}">31</span> Comments</a>
 									</span>
 								</div>
 							</div>
@@ -97,7 +97,7 @@
 						<div class="status_list_item icon_kyubo">
 							<div class="status_user" th:style="|background-image: url('/upload/mood/${mood.image}');|">
 								<div class="status_section">
-									<a href="detail.html" class="status_btn" th:text="${mood.title}">状态</a>
+									<a href="javascript:;" class="status_btn" th:text="${mood.title}">状态</a>
 									<p class="section_p" th:text="${mood.content}">因为我这后半年飘忽不定的更新节奏，感觉真的对不住用户。最近才松下来能处理反馈的bug，顺便加快新主题 Dcras 的制作，农历年后或许能上线，准确时间，不敢说-- 为了感谢大家对 Yarn 的支持，Dcras 会以 获兑现码半价的承诺 给 Yarn ...</p>
 								</div>
 							</div>
@@ -115,6 +115,7 @@
 					</div>
 				</div>
 				<!-- -pagination  -->
+			</article>
 		</div>
 	</div>
 
@@ -237,6 +238,14 @@
 				}
 			}
 		})();
+	</script>
+	<script type="text/javascript" th:inline="javascript">
+		function search() {
+			var keyWord = $("#input-16").val();
+			window.open([[@{~/search?keyWord=}]]+keyWord)
+
+			}
+
 	</script>
 </body>
 

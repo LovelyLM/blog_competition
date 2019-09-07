@@ -37,6 +37,7 @@ public class CommentController {
             String time = simpleDateFormat.format(date);
             blogComment.setCreatTime(time);
             blogComment.setBlog(blogService.findAllById(Long.valueOf(blogId)));
+            blogService.updateComment(Long.valueOf(blogId));
             blogComment.setVisitor((Visitor) servletRequest.getSession().getAttribute("visitor"));
             blogCommentService.save(blogComment);
             return "ok";

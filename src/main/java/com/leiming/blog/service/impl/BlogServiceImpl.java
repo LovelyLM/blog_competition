@@ -40,4 +40,24 @@ public class BlogServiceImpl implements BlogService {
     public List<String> findAllBlogTimeLine() {
         return blogRepository.findBlogTimeLine();
     }
+
+    @Override
+    public void delBlog(String blogId) {
+        blogRepository.deleteById(Long.valueOf(blogId));
+    }
+
+    @Override
+    public List<Blog> searchBlog(String keyWord) {
+        return blogRepository.searchBlog(keyWord);
+    }
+
+    @Override
+    public void updateReads(Long blogId) {
+        blogRepository.updateReads(blogId);
+    }
+
+    @Override
+    public void updateComment(Long blogId) {
+        blogRepository.updateComment(blogId);
+    }
 }

@@ -11,4 +11,6 @@ public interface CatalogService {
     Catalog findCatalogByCatalog(String catalog);
 
     List<Catalog> findAllCatalog();
+
+    Catalog findAllByCatalogId(Long catalogId);
 }

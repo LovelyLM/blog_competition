@@ -18,39 +18,33 @@
 
 			<h1 class="page-title" >以&ldquo;<span th:text="${keyWord}"></span>&rdquo;为关键字</h1>
 
-			<p class="Searchmeta">共计 <span th:text="${blogListSize}"></span> 篇文章</p>
+			<p class="Searchmeta">共计 0 篇文章</p>
 
 			<div class="location">
 				当前位置：
 				<a th:href="@{~/index}" >首页</a>
-				<span th:text="'&raquo; 搜索结果 &raquo; '+${keyWord}"></span>
+				<span th:text="'&raquo; 搜索结果 &raquo; '"></span>
 			</div>
 
-			<div class="posts-list js-posts" th:each="blog:${blogList}">
+			<div class="posts-list js-posts" >
 
 				<div class="archive-post">
 
 					<div class="type">
 						<div class="mask">
-							<i class="iconfont">&#xe603;</i>
+							<i class="iconfont"></i>
 						</div>
 					</div>
 
 					<h2 class="archive-title" style="color: #">
 
-						<span>
+						<span style="color: red">非法参数请求！</span>
 
-							<a th:href="@{'/blogDetail?id='+${blog.id}}" th:text="${blog.title}">交代是不可能交代的</a>
-
-						</span>
-
-						<div class="post-time" th:text="${blog.createTime}">2018/03/20</div>
+						<div class="post-time" ></div>
 
 					</h2>
 
-					<div class="post-category">
-						<a th:href="@{'/searchCatalog?catalogId='+${catalog.id}}" rel="category tag"  th:each="catalog:${blog.catalogs}" th:text="${catalog.catalog}">Happen</a>
-					</div>
+
 
 				</div>
 

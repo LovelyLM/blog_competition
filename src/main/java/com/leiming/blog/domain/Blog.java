@@ -37,26 +37,51 @@ public class Blog {
     private List<BlogComment> blogComments = new ArrayList<>();
 
 
-    protected Blog(){
+    protected Blog() {
 
     }
-    @Override
-    public String toString() {
-        return "Blog{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", viewNumber=" + viewNumber +
-                ", commentNumber=" + commentNumber +
-                ", cover='" + cover + '\'' +
-                ", image='" + image + '\'' +
-                ", littleTitle='" + littleTitle + '\'' +
-                ", littleContent='" + littleContent + '\'' +
-                ", mood=" + mood +
-                ", catalogs=" + catalogs +
-                ", blogComments=" + blogComments +
-                '}';
+
+    public Blog(Long id, String title, String content, String createTime, Long viewNumber, Long commentNumber,
+                String cover, String image, String littleTitle, String littleContent, Mood mood,
+                List<BlogComment> blogComments, Set<Catalog> catalogs) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.createTime = createTime;
+        this.viewNumber = viewNumber;
+        this.commentNumber = commentNumber;
+        this.cover = cover;
+        this.image = image;
+        this.littleTitle = littleTitle;
+        this.littleContent = littleContent;
+        this.mood = mood;
+        this.blogComments = blogComments;
+        this.catalogs = catalogs;
+    }
+
+    public List<BlogComment> getBlogComments() {
+        return blogComments;
+    }
+
+    public void setBlogComments(List<BlogComment> blogComments) {
+        this.blogComments = blogComments;
+    }
+
+    public Set<Catalog> getCatalogs() {
+        return catalogs;
+    }
+
+    public void setCatalogs(Set<Catalog> catalogs) {
+        this.catalogs = catalogs;
+    }
+
+    public Mood getMood() {
+        return mood;
+    }
+
+    public void setMood(Mood mood) {
+        this.mood = mood;
     }
 
     public Long getId() {
@@ -139,42 +164,11 @@ public class Blog {
         this.littleContent = littleContent;
     }
 
-    public Mood getMood() {
-        return mood;
-    }
-
-    public void setMood(Mood mood) {
-        this.mood = mood;
-    }
-
-    public Set<Catalog> getCatalogs() {
-        return catalogs;
-    }
-
-    public void setCatalogs(Set<Catalog> catalogs) {
-        this.catalogs = catalogs;
-    }
-
-    public List<BlogComment> getBlogComments() {
-        return blogComments;
-    }
-
-    public void setBlogComments(List<BlogComment> blogComments) {
-        this.blogComments = blogComments;
-    }
-
-    public Blog(String title, String content, String createTime, Long viewNumber, Long commentNumber, String cover, String image, String littleTitle, String littleContent, Mood mood, Set<Catalog> catalogs, List<BlogComment> blogComments) {
-        this.title = title;
-        this.content = content;
-        this.createTime = createTime;
-        this.viewNumber = viewNumber;
-        this.commentNumber = commentNumber;
-        this.cover = cover;
-        this.image = image;
-        this.littleTitle = littleTitle;
-        this.littleContent = littleContent;
-        this.mood = mood;
-        this.catalogs = catalogs;
-        this.blogComments = blogComments;
+    @Override
+    public String toString() {
+        return "Blog [id=" + id + ", title=" + title + ", content=" + content + ", createTime=" + createTime
+                + ", viewNumber=" + viewNumber + ", commentNumber=" + commentNumber + ", cover=" + cover + ", image="
+                + image + ", littleTitle=" + littleTitle + ", littleContent=" + littleContent + ", mood=" + mood
+                + ", catalogs=" + catalogs + "]";
     }
 }

@@ -36,12 +36,12 @@
 
 					<div class="meta split split--responsive cf" style="display: block;">
 
-						<div id="social-share">
-							<span class="entypo-share">
-								<i class="iconfont">&#xe614;</i>
-								分享
-							</span>
-						</div>
+<!--						<div id="social-share">-->
+<!--							<span class="entypo-share">-->
+<!--								<i class="iconfont">&#xe614;</i>-->
+<!--								分享-->
+<!--							</span>-->
+<!--						</div>-->
 						<div class="slide">
 							<a class="btn-slide" title="switch down">
 								<i class="iconfont">&#xe615;</i>
@@ -149,8 +149,8 @@
 
 								<div class="clearfix"></div>
 								<div class="author-info">
-									<input required="required" type="text" name="name" id="name" placeholder="昵   称 : " value="" tabindex="2" title="E-mail(will not be published) required" />
-									<input required="required" type="text" name="qq" id="qq" placeholder="Q  Q : " value="" tabindex="3" title="Website" />
+									<input autocomplete="off" required="required" type="text" name="name" id="name" placeholder="昵   称 : " value="" tabindex="2" title="E-mail(will not be published) required" />
+									<input autocomplete="off" required="required" type="text" name="qq" id="qq" placeholder="Q  Q : " value="" tabindex="3" title="Website" />
 								</div>
 								<div class="clearfix"></div>
 								<input type='hidden' name='comment_post_ID' value='2' id='comment_post_ID' />
@@ -163,7 +163,7 @@
 								</p>
 								<div class="comment-form-info">
 									<div class="real-time-gravatar">
-										<img id="real-time-gravatar" src="https://qlogo1.store.qq.com/qzone/3074193836/3074193836/100" alt="头像" />
+										<img id="real-time-gravatar" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1709565119,1587470026&fm=26&gp=0.jpg" alt="头像" />
 									</div>
 
 									<p class="input-row">
@@ -205,8 +205,8 @@
 				url:[[@{~/saveVisitor}]],
 				data:{"name":name,"qq":qq},
 				type:"post",
-						success:function (data) {
-					layer.msg(data);
+						success:function () {
+
 
 				}
 			})
@@ -220,8 +220,8 @@
 				url:[[@{~/saveVisitor}]],
 				data:{"name":name,"qq":qq},
 				type:"post",
-						success:function (data) {
-					layer.msg(data);
+						success:function () {
+
 
 				}
 			})
@@ -237,9 +237,10 @@
 					type:"post",
 							success:function (data) {
 
-						if (data=="ok"){					layer.msg("留言成功！",function () {
-							window.location = [[@{~/findAllMessage}]]
-							})}else {
+						if (data=="ok"){					layer.msg("留言成功！");
+						setTimeout( function(){
+							location.reload();
+						}, 1000 )}else {
 							layer.msg("请检查所填信息是否正确！")
 						}
 					}

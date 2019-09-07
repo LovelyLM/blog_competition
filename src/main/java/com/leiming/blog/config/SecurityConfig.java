@@ -16,7 +16,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().and().authorizeRequests()
-                .antMatchers("/index","/","/saveVisitor","/saveBlogComment","/findAllMessage","/saveMessage","/user","/archives","/blogDetail","/gustbook","/link","/blog","/mood","/css/**","/images/**","/js/**","/layer/**","/lib/**","/social/**","/statics/**","/upload/**").permitAll().anyRequest().authenticated().and().csrf().disable();
+        http.formLogin().and().logout().logoutSuccessUrl("/").deleteCookies("JSESSIONID").and().authorizeRequests()
+                .antMatchers("/index","/","/searchCatalog","/saveVisitor","/search","/saveBlogComment","/findAllMessage","/saveMessage","/user","/archives","/blogDetail","/gustbook","/link","/blog","/mood","/css/**","/images/**","/js/**","/layer/**","/lib/**","/social/**","/statics/**","/upload/**").permitAll().anyRequest().authenticated().and().csrf().disable()
+                ;
     }
 }

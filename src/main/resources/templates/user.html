@@ -24,12 +24,14 @@
 	<script src="lib/js/editormd/editormd.js"></script>
 	<script src="lib/js/editormd/lib/marked.min.js"></script>
 	<script src="lib/js/editormd/lib/prettify.min.js"></script>
+	<link href="https://cdn.bootcss.com/ionicons/4.5.6/collection/icon/icon.css" rel="stylesheet">
 	<style>
 		h1 {
-			text-align: center;
+			text-align: left;
 			color: black;
 
 		}
+
 	</style>
 	<script type="text/javascript">
 		$(function() {
@@ -38,6 +40,8 @@
 				// htmlDecode : true,  // Enable / disable HTML tag encode.
 				// htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
 			});
+			$("#test-markdown-view li").css("list-style","disc");
+
 		});
 	</script>
 
@@ -53,7 +57,27 @@
 					<div class="status_section">
 						<div id="test-markdown-view">
 							<!-- Server-side output Markdown text -->
-							<textarea id="dsa" style="display:none;"># 个人简介</textarea>
+							<textarea id="dsa" style="display:none;">本博客系统是 2019 年 6 月开始建立，由我们小组团队维护至今，在 2019 年 9 月份，代码全部开源。
+转载请注明出处，有错误欢迎评论指正，或者直接在仓库发起 PR。
+# 个人信息
+key|value
+--|:--:
+nickname|LovelyLM
+birthday|1997.03.27
+school|[@CQIE](http://www.cqie.edu.cn)
+location|[@Loading...](https://github.com/LovelyLM)
+# 开源项目
+*以下开源项目信息是 2019-09-07 当日的有效信息*
+1. [tencent_jdk-test](https://github.com/LovelyLM/tencent_jdk-test)：腾讯云短信用户注册与登录小demo
+2. [springboot-learn](https://github.com/LovelyLM/springboot-learn)：SpringBoot 学习工具箱（包含各种小demo）
+3. [voteSystem](https://github.com/LovelyLM/voteSystem)：在线投票系统
+4. [blog](https://github.com/LovelyLM/blog_competition)：博客系统（此网站）
+# 联系方式
+* Email: leiming520vip@gmail.com
+* Q  Q  : 1079626899
+* Github：https://github.com/LovelyLM
+* Weibo：https://weibo.com/tandesong
+* Bilibili：https://space.bilibili.com/8215072</textarea>
 
 						</div>
 					</div>
@@ -354,6 +378,7 @@
 				}
 			}
 		})();
+
 	</script>
 </body>
 </html>
