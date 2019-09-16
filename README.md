@@ -2,7 +2,7 @@
 重工2019秋第二课堂雷总小组参赛项目
 ## 在线演示地址：http://47.103.74.202
 http://47.103.74.202/login *管理员登录地址，leiming，123456*
-**部分截图**
+### **部分截图**
 ![1.png](https://i.loli.net/2019/09/16/mBeoN5jvSpWrKiq.png)
 ![2.png](https://i.loli.net/2019/09/16/ZTQ5RGeIDnfyrK2.png)
 ![6.png](https://i.loli.net/2019/09/16/UKw8QhGZuLAjzVo.png)
