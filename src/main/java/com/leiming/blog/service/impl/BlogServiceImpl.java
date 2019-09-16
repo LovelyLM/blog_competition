@@ -21,8 +21,8 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public List<Blog> findAllBlog() {
-        Iterable<Blog> blogList = blogRepository.findAll();
-        return (List<Blog>) blogList;
+        List<Blog> blogList = blogRepository.findAllBlogByCreateTime();
+        return blogList;
     }
 
     @Override
@@ -59,5 +59,10 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public void updateComment(Long blogId) {
         blogRepository.updateComment(blogId);
+    }
+
+    @Override
+    public List<Blog> findAllBlogLimit7() {
+        return blogRepository.findAllBlogLimit7();
     }
 }

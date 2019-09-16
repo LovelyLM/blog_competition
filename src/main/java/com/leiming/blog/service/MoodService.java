@@ -6,9 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 public interface MoodService {
     void save(Mood mood);
-
-
     List<Mood> findAllMood();
-
     void deleteMoodById(long id);
+    List<Mood> findAllMoodLimit7();
 }

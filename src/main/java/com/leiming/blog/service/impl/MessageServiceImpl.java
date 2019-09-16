@@ -19,6 +19,12 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public List<Message> test() {
+        Iterable<Message> messages = messageRepository.findAll();
+        return (List<Message>)messages;
+    }
+
+    @Override
     public PageBean getMessagePageBean(Integer currentPage) {
         Integer totalCount = messageRepository.findAllMessageNum();
         PageBean pageBean = new PageBean(currentPage,totalCount,5);

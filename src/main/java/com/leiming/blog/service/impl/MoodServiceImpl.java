@@ -20,13 +20,18 @@ public class MoodServiceImpl implements MoodService {
 
     @Override
     public List<Mood> findAllMood() {
-        Iterable<Mood> moods = moodRepository.findAll();
-        return (List<Mood>) moods;
+        List<Mood> moods = moodRepository.findAllMoodByTime();
+        return moods;
     }
 
     @Override
     public void deleteMoodById(long id) {
         moodRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Mood> findAllMoodLimit7() {
+        return moodRepository.findAllMoodLimit7();
     }
 
 }

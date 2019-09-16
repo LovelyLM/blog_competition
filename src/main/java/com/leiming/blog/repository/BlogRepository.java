@@ -25,4 +25,8 @@ public interface BlogRepository extends CrudRepository<Blog,Long> {
     @Modifying
     @Transactional
     void updateComment(Long blogId);
+    @Query(value = "select * from blog order by create_time desc",nativeQuery = true)
+    List<Blog> findAllBlogByCreateTime();
+    @Query(value = "SELECT * FROM blog ORDER BY create_time DESC LIMIT 7 ",nativeQuery = true)
+    List<Blog> findAllBlogLimit7();
 }

@@ -24,7 +24,6 @@ public class UploadController {
     @RequestMapping("/saveImage")
     public String saveImage(@RequestParam(value = "file") MultipartFile file) throws FileNotFoundException {
         String filename = file.getOriginalFilename();
-        System.out.println(filename);
         //后缀获取
         String sname = filename.substring(filename.lastIndexOf("."));
         //获取当前时间
@@ -34,23 +33,40 @@ public class UploadController {
         filename = timeStamp+sname;
         userService.modifyImage(filename);
         System.out.println("新的原始文件:"+filename);
-        String path = ResourceUtils.getURL("classpath:").getPath()+"static/upload/ico_original";
+//        String path = "src/main/resources/static/upload/ico_original";
+//        File file2 = new File(path);
+//        try {
+//            //构建真实的文件路径
+//            File newFile = new File(file2.getAbsolutePath() + File.separator + filename);
+//            System.out.println(newFile);
+//            //转存文件到指定路径，如果文件名重复的话，将会覆盖掉之前的文件,这里是把文件上传到 “绝对路径”
+//            file.transferTo(newFile);
+//
+//            return filename;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+
+        String path = ResourceUtils.getURL("classpath:").getPath()+"static"+File.separator+"upload"+File.separator+"ico_original";
+        System.out.println(path);
         File dest = null;
         try {
-            dest = new File(URLDecoder.decode(path+"/"+filename,"utf-8"));
+            dest = new File(URLDecoder.decode(path+File.separator+filename,"utf-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(dest.getParentFile());
         if (!dest.exists()){
             dest.mkdirs();
         }
+        System.out.println(dest);
         try {
             file.transferTo(dest);
+            return filename;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return filename;
+        return "failed";
     }
     @ResponseBody
     @RequestMapping("/saveMoodImage")

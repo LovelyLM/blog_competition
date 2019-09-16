@@ -65,7 +65,7 @@ public class BlogController {
     @RequestMapping("blog")
     @ResponseBody
     public ModelAndView findAllBlog(Model model){
-        List<Blog> blogList = blogService.findAllBlog();
+        List<Blog> blogList = blogService.findAllBlogLimit7();
         List<Catalog> catalogList= catalogsService.findAllCatalog();
         model.addAttribute("blogList",blogList);
         model.addAttribute("catalogList",catalogList);

@@ -23,4 +23,5 @@ public interface BlogService {
     void updateReads(Long blogId);
 
     void updateComment(Long blogId);
+    List<Blog> findAllBlogLimit7();
 }

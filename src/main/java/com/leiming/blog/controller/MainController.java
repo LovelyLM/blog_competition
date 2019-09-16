@@ -27,8 +27,8 @@ public class MainController {
     @RequestMapping("/index")
     @ResponseBody
     public ModelAndView index(Model model){
-        List<Blog> blogList = blogService.findAllBlog();
-        List<Mood> moodList =moodService.findAllMood();
+        List<Blog> blogList = blogService.findAllBlogLimit7();
+        List<Mood> moodList = moodService.findAllMoodLimit7();
         model.addAttribute("moodList",moodList);
         model.addAttribute("blogList",blogList);
         return new ModelAndView("index.html","indexModel",model);
